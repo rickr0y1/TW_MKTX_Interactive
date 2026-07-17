@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tradeweb &amp; MarketAxess — Interactive Platform Reference</title>
+<style>
+:root { --color-background-primary:#fff; --color-background-secondary:#f5f4ef; --color-background-tertiary:#ebe9e0; --color-text-primary:#1a1a1a; --color-text-secondary:#6b6b6b; --color-text-tertiary:#888780; --color-border-tertiary:#e2dfd9; --color-border-secondary:#d8d4cf; --color-border-primary:#c5c0b6; --font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif; --border-radius-md:8px; --border-radius-lg:12px; }
+@media (prefers-color-scheme: dark) { :root { --color-background-primary:#1f1e1c; --color-background-secondary:#2a2826; --color-background-tertiary:#36332f; --color-text-primary:#f5f4ef; --color-text-secondary:#b8b3ac; --color-text-tertiary:#888780; --color-border-tertiary:#3a3733; --color-border-secondary:#4a4641; --color-border-primary:#5a5651; } }
+*{box-sizing:border-box}
+body{font-family:var(--font-sans);background:var(--color-background-tertiary);color:var(--color-text-primary);margin:0;padding:24px 16px;font-size:14px;line-height:1.6}
+.page{max-width:1480px;margin:0 auto;background:var(--color-background-primary);border-radius:var(--border-radius-lg);padding:28px 32px 36px}
+.page>header{margin-bottom:8px}
+.page>header h1{font-size:22px;font-weight:500;margin:0 0 6px}
+.page>header p{font-size:13px;color:var(--color-text-secondary);margin:0 0 4px}
+.tabs{display:flex;gap:6px;margin:16px 0 18px;padding:4px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);width:fit-content}
+.tab{padding:8px 18px;font-size:13px;font-weight:500;cursor:pointer;background:transparent;border:none;border-radius:var(--border-radius-md);color:var(--color-text-secondary)}
+.tab.active{background:var(--color-background-primary);color:var(--color-text-primary)}
+.tab.tw.active{color:#0F6E56}
+.tab.mktx.active{color:#185FA5}
+.tab.compare.active{color:#993556}
+.cmp-section{margin:18px 0 26px}
+.cmp-section h2{font-size:15px;font-weight:500;margin:0 0 10px;letter-spacing:0.02em;color:var(--color-text-primary)}
+.cmp-section p.intro{margin:0 0 12px;color:var(--color-text-secondary);font-size:13px;line-height:1.6}
+.cmp-grid{display:grid;grid-template-columns:1.6fr 2fr 2fr;gap:0;border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);overflow:hidden;font-size:12.5px;line-height:1.55}
+.cmp-grid>div{padding:10px 14px;border-bottom:0.5px solid var(--color-border-tertiary)}
+.cmp-grid>div:nth-last-child(-n+3){border-bottom:none}
+.cmp-grid .cmp-h{background:var(--color-background-secondary);font-weight:500;font-size:11px;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:0.08em;padding:8px 14px}
+.cmp-grid .cmp-c{font-weight:500;color:var(--color-text-primary);background:var(--color-background-secondary);font-size:12.5px}
+.cmp-grid .cmp-tw{border-left:2px solid #0F6E56;background:var(--color-background-primary)}
+.cmp-grid .cmp-mktx{border-left:2px solid #185FA5;background:var(--color-background-primary)}
+.cmp-grid strong{color:var(--color-text-primary);font-weight:500}
+.cmp-grid .lead-tw{display:inline-block;font-size:10px;padding:1px 6px;border-radius:3px;background:#E1F5EE;color:#04342C;margin-right:4px;font-weight:500}
+.cmp-grid .lead-mktx{display:inline-block;font-size:10px;padding:1px 6px;border-radius:3px;background:#E6F1FB;color:#042C53;margin-right:4px;font-weight:500}
+.cmp-grid .lead-tied{display:inline-block;font-size:10px;padding:1px 6px;border-radius:3px;background:var(--color-background-secondary);color:var(--color-text-tertiary);margin-right:4px;font-weight:500}
+.cmp-callout{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+.cmp-callout>div{padding:14px 18px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);border-left:3px solid;font-size:13px;line-height:1.6}
+.cmp-callout>div.tw{border-left-color:#0F6E56}
+.cmp-callout>div.mktx{border-left-color:#185FA5}
+.cmp-callout h3{margin:0 0 6px;font-size:13px;font-weight:500;color:var(--color-text-primary)}
+.cmp-callout ul{margin:6px 0 0;padding-left:18px;color:var(--color-text-secondary);font-size:12.5px}
+.cmp-callout li{margin:3px 0;line-height:1.5}
+.cmp-callout li strong{color:var(--color-text-primary);font-weight:500}
+button{font-family:var(--font-sans);background:var(--color-background-primary);border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);color:var(--color-text-primary);padding:6px 12px;font-size:12px;cursor:pointer}
+button:hover{background:var(--color-background-secondary)}
+.platform.hidden{display:none}
+.platform-header{font-size:13px;color:var(--color-text-secondary);margin:0 0 12px;padding:10px 14px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);border-left:3px solid;line-height:1.55}
+.platform-header.tw{border-left-color:#0F6E56}
+.platform-header.mktx{border-left-color:#185FA5}
+.platform-header strong{color:var(--color-text-primary);font-weight:500}
+.dd-row{display:flex;gap:8px;align-items:center;padding:4px 4px 8px;flex-wrap:wrap;font-size:12px;color:var(--color-text-secondary)}
+.dd-row .lbl{font-size:11px;color:var(--color-text-tertiary);letter-spacing:0.08em;text-transform:uppercase;margin-right:4px}
+.dd-chip{padding:4px 10px;font-size:12px;cursor:pointer;background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);color:var(--color-text-primary)}
+.dd-chip:hover{background:var(--color-background-secondary)}
+.dd-chip.dd-active{background:#FAECE7;border-color:#D85A30;color:#4A1B0C}
+.dd-build-btn.dd-active{background:#FAECE7;border-color:#D85A30;color:#4A1B0C}
+.dd-lm{padding:4px 10px;font-size:12px;cursor:pointer;background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);color:var(--color-text-primary)}
+.dd-lm:hover{background:var(--color-background-secondary)}
+.dd-lm.dd-active{background:#E1F5EE;border-color:#0F6E56;color:#04342C}
+.dd-lm[data-lm="d2c"].dd-active{background:#E6F1FB;border-color:#185FA5;color:#042C53}
+.dd-lm[data-lm="d2d"].dd-active{background:#EEEDFE;border-color:#534AB7;color:#26215C}
+.dd-lm[data-lm="a2a"].dd-active{background:#E1F5EE;border-color:#0F6E56;color:#04342C}
+.dd-lm[data-lm="dealer"].dd-active{background:#FAEEDA;border-color:#854F0B;color:#412402}
+.dd-lm[data-lm="session"].dd-active{background:#FBEAF0;border-color:#993556;color:#4B1528}
+.dd-legend{display:flex;flex-wrap:wrap;gap:14px;padding:4px 4px 10px;font-size:11px;color:var(--color-text-secondary);align-items:center}
+.dd-legend .lg{display:inline-flex;align-items:center;gap:5px}
+.dd-legend .sw{display:inline-block;width:10px;height:10px;border-radius:2px}
+.dd-scroll{overflow-x:auto;overflow-y:hidden;border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);background:var(--color-background-primary)}
+.dd-scroll svg{display:block}
+.dd-detail{margin-top:12px;padding:16px 20px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);min-height:120px;font-size:13px;line-height:1.65}
+.dd-detail h3{font-size:16px;font-weight:500;margin:0 0 4px}
+.dd-detail .meta{color:var(--color-text-secondary);font-size:12px;margin:0 0 12px}
+.dd-detail p{margin:0 0 8px}
+.dd-detail .ovw{margin:0 0 14px;font-size:13.5px}
+.dd-detail .sec{margin:12px 0 0}
+.dd-detail .sec h4{font-size:12px;font-weight:500;margin:0 0 4px;letter-spacing:0.04em;text-transform:uppercase}
+.dd-detail .sec p{margin:0;font-size:13px;line-height:1.65}
+.dd-detail ol{margin:6px 0 0;padding-left:22px;font-size:12px;color:var(--color-text-secondary);line-height:1.6}
+.dd-detail ol li strong{color:var(--color-text-primary);font-weight:500}
+.dd-detail .conn-block{margin-top:14px;padding-top:12px;border-top:0.5px solid var(--color-border-tertiary)}
+.dd-detail .conn-row{font-size:12px;color:var(--color-text-secondary);margin-top:3px;line-height:1.55}
+.dd-detail .conn-row strong{color:var(--color-text-primary);font-weight:500}
+.dd-node text{pointer-events:none;user-select:none;font-family:var(--font-sans)}
+.dd-node rect.dd-card{cursor:pointer;transition:stroke-width 0.15s,opacity 0.18s}
+.dd-node:hover rect.dd-card{stroke:var(--color-border-secondary)}
+.dd-edge{stroke-width:1;opacity:0.10;transition:opacity 0.2s,stroke-width 0.2s;pointer-events:none;fill:none}
+.dd-tier{font-size:10px;fill:var(--color-text-tertiary);font-weight:500;letter-spacing:0.12em;pointer-events:none}
+.dd-dim{opacity:0.18}
+.dd-on{opacity:1!important}
+.dd-edge.dd-on{opacity:0.55;stroke-width:1.4}
+.dd-edge.dd-feedback{stroke-dasharray:4 3}
+.dd-node.dd-sel rect.dd-card{stroke-width:2.2}
+.dd-wf-line{stroke:#D85A30;stroke-width:2.2;fill:none;opacity:0.95}
+.dd-wf-badge-bg{fill:#D85A30}
+.dd-wf-badge-tx{fill:#fff;font-size:10.5px;font-weight:500;pointer-events:none}
+footer.page-footer{margin-top:24px;padding-top:16px;border-top:0.5px solid var(--color-border-tertiary);font-size:11px;color:var(--color-text-tertiary)}
+.metrics-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin:0 0 14px}
+.metric{padding:8px 12px;background:var(--color-background-secondary);border-radius:var(--border-radius-md)}
+.metric .mlbl{font-size:10px;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:2px}
+.metric .mval{font-size:14px;font-weight:500;color:var(--color-text-primary)}
+.metric .mtrend{font-size:11px;color:var(--color-text-secondary)}
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <h1>Electronic fixed income platforms — interactive reference</h1>
+  <p>Tradeweb and MarketAxess architecture, protocols, liquidity pools, tools, and workflows. Click any node for the deep-dive.</p>
+  <p style="font-size:11px;color:var(--color-text-tertiary)">Sourced from FY2025 10-Ks (Feb 2026), 2025 Annual Reports, MKTX 2025 Proxy, and 1Q26 earnings decks. Last updated May 2026.</p>
+  <div class="tabs">
+    <button class="tab tw active" data-platform="tw">Tradeweb</button>
+    <button class="tab mktx" data-platform="mktx">MarketAxess</button>
+    <button class="tab compare" data-platform="compare">Compare</button>
+  </div>
+</header>
+
+<div class="platform" id="platform-tw">
+  <div class="platform-header tw">
+    <strong>Tradeweb (NASDAQ: TW)</strong> · multi-asset rates, credit, equities, money markets · LSEG-controlled · FY2025: <strong>$2.05B revenue (+18.9%)</strong> · 26th consecutive year of record revenue · $2.6T ADV · 150,000+ daily trades · 3,000+ clients · 85+ countries · 50+ products · 400+ technologists · 14 datacenters. <strong>Brand unification 2025</strong>: Dealerweb (wholesale), Tradeweb Direct (retail), and ICD (corporates) being retired as separate brands and gradually unified under one Tradeweb brand across four client sectors.
+  </div>
+  <div class="metrics-strip">
+    <div class="metric"><div class="mlbl">FY25 Revenue</div><div class="mval">$2.05B</div><div class="mtrend">+18.9% · 26th record yr</div></div>
+    <div class="metric"><div class="mlbl">Rates revenue</div><div class="mval">$1,094M</div><div class="mtrend">+20.8% · 53% of total</div></div>
+    <div class="metric"><div class="mlbl">Credit revenue</div><div class="mval">$488M</div><div class="mtrend">+6.3% · 24% of total</div></div>
+    <div class="metric"><div class="mlbl">Money Markets</div><div class="mval">$174M</div><div class="mtrend">+50.9% · ICD full year</div></div>
+    <div class="metric"><div class="mlbl">Equities revenue</div><div class="mval">$127M</div><div class="mtrend">+21.9% · ETFs+derivs</div></div>
+    <div class="metric"><div class="mlbl">Market Data</div><div class="mval">$134M</div><div class="mtrend">+13.3% · LSEG license</div></div>
+    <div class="metric"><div class="mlbl">Institutional sector</div><div class="mval">$1.28B</div><div class="mtrend">+23.1%</div></div>
+    <div class="metric"><div class="mlbl">Wholesale sector</div><div class="mval">$401M</div><div class="mtrend">+3.9% (Dealerweb)</div></div>
+    <div class="metric"><div class="mlbl">Retail sector</div><div class="mval">$147M</div><div class="mtrend">+2.3% (TW Direct)</div></div>
+    <div class="metric"><div class="mlbl">Corporates sector</div><div class="mval">$96M</div><div class="mtrend">+121.8% (ICD full yr)</div></div>
+    <div class="metric"><div class="mlbl">Swaps revenue</div><div class="mval">$500M+</div><div class="mtrend">crossed milestone 2025</div></div>
+    <div class="metric"><div class="mlbl">Digital assets</div><div class="mval">$10M+</div><div class="mtrend">Canton Network</div></div>
+  </div>
+  <div class="dd-row"><span class="lbl">Workflow:</span>
+    <button class="dd-chip" data-wf="aiex-rfq">AiEX no-touch RFQ</button>
+    <button class="dd-chip" data-wf="credit-pt">Credit portfolio trade</button>
+    <button class="dd-chip" data-wf="netspot">Net spotting</button>
+    <button class="dd-chip" data-wf="cleared-irs">Cleared IRS (RFM)</button>
+    <button class="dd-chip" data-wf="ust-clob">Inter-dealer UST CLOB</button>
+    <button class="dd-chip" data-wf="compress">IRS compression</button>
+    <button class="dd-chip" data-wf="midx">Sweep / Mid-X</button>
+    <button class="dd-chip" data-wf="snap">Rematch / A2A</button>
+    <button class="dd-chip" data-wf="muni-retail">Muni retail</button>
+    <button class="dd-chip" data-wf="etf-rfq">ETF RFQ + iNAV</button>
+    <button class="dd-chip" data-wf="repo">Sponsored repo (FICC)</button>
+    <button class="dd-chip" data-wf="dealer-quote">Dealer auto-quote</button>
+    <button class="dd-chip" data-wf="icd-corp">ICD corporate cash + UST</button>
+  </div>
+  <div class="dd-row"><span class="lbl">Liquidity model:</span>
+    <button class="dd-lm" data-lm="d2c">D2C disclosed</button>
+    <button class="dd-lm" data-lm="d2d">D2D inter-dealer</button>
+    <button class="dd-lm" data-lm="a2a">A2A · Blast / AllTrade</button>
+    <button class="dd-lm" data-lm="dealer">Dealer-initiated</button>
+    <button class="dd-lm" data-lm="session">Session-based</button>
+  </div>
+  <div class="dd-row"><span class="lbl">Custom:</span>
+    <button class="dd-build-btn" data-build="1">Build my own path</button>
+    <button data-clear="1">Clear</button>
+    <span class="dd-hint" style="font-size:12px">Click any node for the deep-dive: mechanics, when to use, why it wins, trade-offs.</span>
+  </div>
+  <div class="dd-legend">
+    <span class="lg"><span class="sw" style="background:#D85A30"></span>Channels</span>
+    <span class="lg"><span class="sw" style="background:#7F77DD"></span>Asset classes</span>
+    <span class="lg"><span class="sw" style="background:#1D9E75"></span>Protocols</span>
+    <span class="lg"><span class="sw" style="background:#BA7517"></span>Liquidity pools</span>
+    <span class="lg"><span class="sw" style="background:#D4537E"></span>Tools / AI</span>
+    <span class="lg"><span class="sw" style="background:#888780"></span>Connectivity</span>
+    <span class="lg"><span class="sw" style="background:#378ADD"></span>Post-trade</span>
+  </div>
+  <div class="dd-scroll"><svg class="dd-svg" viewBox="0 0 1400 920" width="1400" height="920" xmlns="http://www.w3.org/2000/svg">
+    <defs><marker id="dd-arrow-tw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#D85A30"/></marker></defs>
+    <g class="dd-tiers"></g><g class="dd-edges"></g><g class="dd-nodes"></g><g class="dd-overlay"></g>
+  </svg></div>
+  <div class="dd-detail"></div>
+</div>
+
+<div class="platform hidden" id="platform-mktx">
+  <div class="platform-header mktx">
+    <strong>MarketAxess (NASDAQ: MKTX)</strong> · credit-first global platform with Open Trading® A2A · Chris Concannon CEO; <strong>Rick McVey retired end-2024</strong> after 25 years; Carlos Hernandez (ex-JPM) Chairman; Ilene Fiszel Bieler CFO (May 2024). FY2025: <strong>$846M revenue (+3.6%) · 16th consecutive year of record revenue</strong>. $247M net income. 90 countries · 6,000 international traders · 1,000+ active international firms. <strong>Open Trading: 1,800 firms · $1.2T volume · 37% of eligible credit · $496M price improvement.</strong> Pragma (2023) brought equities + FX algo trading. RFQ-hub majority stake closed Q2 2025 (ETF + derivatives bilateral RFQ). Mid-X: 2024 EM/eurobonds, 2025 US credit re-launch.
+  </div>
+  <div class="metrics-strip">
+    <div class="metric"><div class="mlbl">FY25 Revenue</div><div class="mval">$846M</div><div class="mtrend">+3.6% · 16th record yr</div></div>
+    <div class="metric"><div class="mlbl">Net income</div><div class="mval">$247M</div><div class="mtrend">29.2% net margin · -9.9%</div></div>
+    <div class="metric"><div class="mlbl">Diluted EPS</div><div class="mval">$6.64</div><div class="mtrend">-8.8% · vs $7.28 in FY24</div></div>
+    <div class="metric"><div class="mlbl">Open Trading vol</div><div class="mval">$1.2T</div><div class="mtrend">37% of eligible · 1,800 firms</div></div>
+    <div class="metric"><div class="mlbl">OT price improvement</div><div class="mval">$496M</div><div class="mtrend">FY25 estimated</div></div>
+    <div class="metric"><div class="mlbl">US IG+HY ADV</div><div class="mval">$8.7B</div><div class="mtrend">17.0% of $51B addressable</div></div>
+    <div class="metric"><div class="mlbl">Intl revenue</div><div class="mval">32.8%</div><div class="mtrend">vs 29.1% in 2021</div></div>
+    <div class="metric"><div class="mlbl">EM + Eurobonds</div><div class="mval">40.5%</div><div class="mtrend">credit ADV · vs 32.7% 2020</div></div>
+    <div class="metric"><div class="mlbl">EMEA/LATAM/APAC ADV</div><div class="mval">$5.6B</div><div class="mtrend">vs $3.3B in 2021</div></div>
+    <div class="metric"><div class="mlbl">1Q26 Mid-X</div><div class="mval">$17.5B</div><div class="mtrend">+163% · US credit launch</div></div>
+    <div class="metric"><div class="mlbl">1Q26 Block ADV</div><div class="mval">$7.0B</div><div class="mtrend">+35% record</div></div>
+    <div class="metric"><div class="mlbl">EM local FX (2025)</div><div class="mval">30 ccy</div><div class="mtrend">via 200 broker-dealers</div></div>
+  </div>
+  <div class="dd-row"><span class="lbl">Workflow:</span>
+    <button class="dd-chip" data-wf="autox-rfq">Auto-X no-touch RFQ</button>
+    <button class="dd-chip" data-wf="adx-ml">Adaptive Auto-X (ADX)</button>
+    <button class="dd-chip" data-wf="ot-block">Open Trading block</button>
+    <button class="dd-chip" data-wf="pt-credit">Credit PT (in-comp)</button>
+    <button class="dd-chip" data-wf="pt-single">Single-dealer PT</button>
+    <button class="dd-chip" data-wf="midx-credit">Mid-X credit session</button>
+    <button class="dd-chip" data-wf="em-hard">EM hard currency</button>
+    <button class="dd-chip" data-wf="em-local">EM local currency</button>
+    <button class="dd-chip" data-wf="eurobond-pt">Eurobond PT</button>
+    <button class="dd-chip" data-wf="muni-rfq">Muni / MuniBrokers</button>
+    <button class="dd-chip" data-wf="dealer-drfq">Dealer DRFQ</button>
+    <button class="dd-chip" data-wf="rfqhub-etf">RFQ-hub ETF / derivs</button>
+    <button class="dd-chip" data-wf="targeted-block">Targeted block (AI)</button>
+  </div>
+  <div class="dd-row"><span class="lbl">Liquidity model:</span>
+    <button class="dd-lm" data-lm="d2c">D2C disclosed</button>
+    <button class="dd-lm" data-lm="d2d">D2D · LiquidityEdge</button>
+    <button class="dd-lm" data-lm="a2a">A2A · Open Trading®</button>
+    <button class="dd-lm" data-lm="dealer">Dealer-initiated · DRFQ</button>
+    <button class="dd-lm" data-lm="session">Session-based · Mid-X</button>
+  </div>
+  <div class="dd-row"><span class="lbl">Custom:</span>
+    <button class="dd-build-btn" data-build="1">Build my own path</button>
+    <button data-clear="1">Clear</button>
+    <span class="dd-hint" style="font-size:12px">Click any node for the deep-dive.</span>
+  </div>
+  <div class="dd-legend">
+    <span class="lg"><span class="sw" style="background:#D85A30"></span>Channels</span>
+    <span class="lg"><span class="sw" style="background:#7F77DD"></span>Asset classes</span>
+    <span class="lg"><span class="sw" style="background:#1D9E75"></span>Protocols</span>
+    <span class="lg"><span class="sw" style="background:#BA7517"></span>Liquidity pools</span>
+    <span class="lg"><span class="sw" style="background:#D4537E"></span>Tools / AI</span>
+    <span class="lg"><span class="sw" style="background:#888780"></span>Connectivity</span>
+    <span class="lg"><span class="sw" style="background:#378ADD"></span>Post-trade</span>
+  </div>
+  <div class="dd-scroll"><svg class="dd-svg" viewBox="0 0 1400 920" width="1400" height="920" xmlns="http://www.w3.org/2000/svg">
+    <defs><marker id="dd-arrow-mktx" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#D85A30"/></marker></defs>
+    <g class="dd-tiers"></g><g class="dd-edges"></g><g class="dd-nodes"></g><g class="dd-overlay"></g>
+  </svg></div>
+  <div class="dd-detail"></div>
+</div>
+
+<div class="platform hidden" id="platform-compare">
+  <div class="platform-header" style="border-left-color:#993556">
+    <strong>Tradeweb vs MarketAxess — side-by-side</strong> · FY2025 financials and 1Q26 operational metrics. They overlap most in <strong>US IG credit and session-based protocols</strong>; differ most in <strong>rates breadth (TW dominant) and A2A network depth (MKTX dominant)</strong>. The two platforms are converging in some areas (Mid-X-style sessions, AI-driven block execution, automation) and diverging in others (TW pushing multi-asset and digital assets; MKTX doubling down on credit specialism).
+  </div>
+
+  <div class="cmp-section">
+    <h2>Financial scale (FY2025)</h2>
+    <p class="intro">TW is roughly 2.4× MKTX by revenue. Revenue growth is the bigger gap — TW +18.9% vs MKTX +3.6% in FY2025.</p>
+    <div class="cmp-grid">
+      <div class="cmp-h">Metric</div><div class="cmp-h">Tradeweb (TW)</div><div class="cmp-h">MarketAxess (MKTX)</div>
+      <div class="cmp-c">Total revenue</div><div class="cmp-tw"><span class="lead-tw">leads</span>$2.05B (+18.9%) · 26th consecutive record</div><div class="cmp-mktx">$846M (+3.6%) · 16th consecutive record</div>
+      <div class="cmp-c">Net income / margin</div><div class="cmp-tw">~$700M (TW reports adjusted EBITDA 55.0%)</div><div class="cmp-mktx">$247M · 29.2% net margin · -9.9% y/y</div>
+      <div class="cmp-c">Diluted EPS</div><div class="cmp-tw">Adjusted $1.08 (+25.6% y/y, 1Q26)</div><div class="cmp-mktx">$6.64 (-8.8% y/y, FY25)</div>
+      <div class="cmp-c">Total ADV</div><div class="cmp-tw"><span class="lead-tw">leads</span>$2.6T multi-asset</div><div class="cmp-mktx">$18.6B credit ADV (1Q26)</div>
+      <div class="cmp-c">Daily trades (avg)</div><div class="cmp-tw">150,000+</div><div class="cmp-mktx">N/A disclosed</div>
+      <div class="cmp-c">Clients</div><div class="cmp-tw">3,000+ across 4 sectors</div><div class="cmp-mktx">~13,000 active traders globally</div>
+      <div class="cmp-c">Countries</div><div class="cmp-tw">85+</div><div class="cmp-mktx">90+</div>
+      <div class="cmp-c">International revenue</div><div class="cmp-tw">$274.1M in 1Q26 (+29.4%)</div><div class="cmp-mktx"><span class="lead-mktx">leads %</span>32.8% of total (vs 29.1% in 2021)</div>
+      <div class="cmp-c">Technologists</div><div class="cmp-tw">400+</div><div class="cmp-mktx">~1,000 unique features delivered FY25</div>
+      <div class="cmp-c">Datacenters</div><div class="cmp-tw">14 (US, UK, Japan, Australia)</div><div class="cmp-mktx">N/A disclosed</div>
+    </div>
+  </div>
+
+  <div class="cmp-section">
+    <h2>Asset class share &amp; revenue</h2>
+    <p class="intro">TW dominates rates and has caught up in credit PT. MKTX dominates EM credit and A2A. The single biggest structural divergence: TW has a $1B+ rates franchise; MKTX has effectively no rates franchise (LiquidityEdge mostly written down).</p>
+    <div class="cmp-grid">
+      <div class="cmp-h">Asset class</div><div class="cmp-h">Tradeweb</div><div class="cmp-h">MarketAxess</div>
+      <div class="cmp-c">US Treasuries</div><div class="cmp-tw"><span class="lead-tw">leads</span>$283B ADV (+16%) · 22.1% share · Dealerweb CLOB tightest spreads</div><div class="cmp-mktx">LiquidityEdge mostly written down · 1Q26 govt bonds ADV $29.5B (+14%)</div>
+      <div class="cmp-c">Global IRS / swaps</div><div class="cmp-tw"><span class="lead-tw">leads</span>$1,399B ADV (+60% 1Q26) · 24.1% share · $500M+ swaps revenue milestone 2025</div><div class="cmp-mktx">No meaningful presence</div>
+      <div class="cmp-c">US IG credit</div><div class="cmp-tw">25.0% share · 12.8% fully electronic · RFQ Edge (2024)</div><div class="cmp-mktx"><span class="lead-mktx">leads share</span>16.9% MKTX share · combined US IG+HY ADV $8.7B (17% of $51B addressable)</div>
+      <div class="cmp-c">US HY credit</div><div class="cmp-tw">9.8% share · 7.4% fully electronic</div><div class="cmp-mktx">Open Trading particularly successful · share contested by Trumid</div>
+      <div class="cmp-c">EM credit</div><div class="cmp-tw">$100M+ EM revenue milestone 2025</div><div class="cmp-mktx"><span class="lead-mktx">leads</span>EM+eurobonds 40.5% of credit ADV (vs 32.7% in 2020) · 30 local currencies via 200 dealers · Indian gov bonds 2025</div>
+      <div class="cmp-c">Eurobonds</div><div class="cmp-tw">Mid-X dominant in EU credit</div><div class="cmp-mktx">1Q26 block ADV +45% record · PT ADV +90% record · BMTF MTF</div>
+      <div class="cmp-c">Munis</div><div class="cmp-tw"><span class="lead-tw">leads retail</span>TW Direct (retail dominant) + Institutional</div><div class="cmp-mktx">MuniBrokers (instl A2A) + ICE Bonds connectivity (2024) for distribution</div>
+      <div class="cmp-c">Portfolio Trading</div><div class="cmp-tw"><span class="lead-tw">pioneered</span>$4.2B ADV record · ~25% of US IG flow</div><div class="cmp-mktx">19.8% PT share · +45% US credit y/y · X-Pro 85% of PT volume</div>
+      <div class="cmp-c">ETFs</div><div class="cmp-tw"><span class="lead-tw">leads</span>$10.5B ADV (+48%) · iNAV calculation · TSE collaboration · equity ETFs $127M revenue</div><div class="cmp-mktx">RFQ-hub majority stake Q2 2025 (bilateral ETF + derivs RFQ) · ICE MSCI MKTX corp bond futures</div>
+      <div class="cmp-c">Money markets</div><div class="cmp-tw"><span class="lead-tw">unique</span>$174M revenue (+50.9%) · ICD MMF + repo + UST · 2025 USTs added to ICD Portal</div><div class="cmp-mktx">No meaningful presence</div>
+      <div class="cmp-c">Equities / FX</div><div class="cmp-tw">Equity ETFs + derivs ($127M revenue +21.9%)</div><div class="cmp-mktx">Algo trading via Pragma (2023 acq) · "Other Commissions"</div>
+      <div class="cmp-c">Digital assets</div><div class="cmp-tw"><span class="lead-tw">unique</span>$10M+ Canton Network revenue · Goldman GS DAP · Fnality · Digital Asset · Alphaledger</div><div class="cmp-mktx">No meaningful presence</div>
+    </div>
+  </div>
+
+  <div class="cmp-section">
+    <h2>Protocol equivalence — same concept, different brand</h2>
+    <p class="intro">The most important translation table. Different vocabulary, similar mechanics. When a TW deck and an MKTX deck describe these protocols, they're describing structurally identical things — the gap is in scale and emphasis.</p>
+    <div class="cmp-grid">
+      <div class="cmp-h">Concept</div><div class="cmp-h">Tradeweb name</div><div class="cmp-h">MarketAxess name</div>
+      <div class="cmp-c">Disclosed RFQ</div><div class="cmp-tw">RFQ (TW pioneered 1998) · RFQ Edge (2024 PT analytics in RFQ)</div><div class="cmp-mktx">Disclosed RFQ · Targeted RFQ (2024, selected dealers)</div>
+      <div class="cmp-c">Two-way / direction-hidden</div><div class="cmp-tw"><span class="lead-tw">leads</span>RFM · 1Q26 swaps RFM ADV $104.5B record</div><div class="cmp-mktx">Limited RFM emphasis</div>
+      <div class="cmp-c">All-to-all anonymous</div><div class="cmp-tw">Blast A2A · AllTrade ($4.7B record 1Q26)</div><div class="cmp-mktx"><span class="lead-mktx">leads</span>Open Trading® · 1,800 firms · $1.2T FY25 · 37% of eligible · $496M price improvement</div>
+      <div class="cmp-c">Session-based mid-match</div><div class="cmp-tw"><span class="lead-tw">leads EU</span>Sweep · Mid-X (TW originated for EU credit)</div><div class="cmp-mktx">Mid-X matching (2024 EM/EB · 2025 US credit re-launch on Pragma) · 1Q26 $17.5B (+163%)</div>
+      <div class="cmp-c">Session-to-A2A bridge</div><div class="cmp-tw"><span class="lead-tw">unique</span>Rematch (Sweep → A2A)</div><div class="cmp-mktx">No equivalent</div>
+      <div class="cmp-c">Portfolio trading</div><div class="cmp-tw"><span class="lead-tw">pioneered</span>Portfolio Trading · ~25% of US IG</div><div class="cmp-mktx">Single-dealer PT + In-competition PT · 19.8% share</div>
+      <div class="cmp-c">List trading</div><div class="cmp-tw">List trading</div><div class="cmp-mktx">List trading</div>
+      <div class="cmp-c">Inter-dealer streaming</div><div class="cmp-tw"><span class="lead-tw">leads</span>Dealerweb CLOB · Bilateral Firm Streams</div><div class="cmp-mktx">LiquidityEdge (mostly written down) · Live Markets streaming</div>
+      <div class="cmp-c">Auto-execution rules</div><div class="cmp-tw"><span class="lead-tw">leads sophistication</span>AiEX · pre-programmed rules · 60-80% no-touch IG</div><div class="cmp-mktx">Auto-X (258 firms) · Adaptive Auto-X / ADX (175 firms, ML-driven block extension)</div>
+      <div class="cmp-c">ML cover prediction</div><div class="cmp-tw"><span class="lead-tw">leads</span>Ai-Price · ~30K corp + ~1M muni bonds · SNAP+ for IRS dealer selection</div><div class="cmp-mktx">Less central in disclosed product</div>
+      <div class="cmp-c">Real-time pricing tape</div><div class="cmp-tw">Composite+</div><div class="cmp-mktx"><span class="lead-mktx">leads distribution</span>CP+® (munis 2024) · S&P Global integration (2024) · FactSet Workstation (2025)</div>
+      <div class="cmp-c">Block trading</div><div class="cmp-tw">Process Trade · workups · cap-upon-entry</div><div class="cmp-mktx"><span class="lead-mktx">leads growth</span>Block ADV $7B record 1Q26 (+35%) · AI dealer selection (2024) · ADX block extension</div>
+      <div class="cmp-c">Dealer-initiated</div><div class="cmp-tw">Process · Voice · wholesale flow</div><div class="cmp-mktx">DRFQ · Mid-X dealer-initiated channel · 1Q26 $1.9B record</div>
+      <div class="cmp-c">Net spotting (credit + UST hedge)</div><div class="cmp-tw"><span class="lead-tw">unique</span>Net Spotting · 1Q26 IG ADV $3.75B · HY ~$1.7B record</div><div class="cmp-mktx">No equivalent</div>
+      <div class="cmp-c">Compression</div><div class="cmp-tw">Up to 200 line items in one tx</div><div class="cmp-mktx">Less central</div>
+      <div class="cmp-c">Futures vs cash spreading</div><div class="cmp-tw"><span class="lead-tw">unique</span>r8fin technology (Jan 2024 acq) · dealer algo suite for UST</div><div class="cmp-mktx">No equivalent</div>
+      <div class="cmp-c">Voice-electronic</div><div class="cmp-tw"><span class="lead-tw">leads</span>Wholesale voice (UST, MBS, munis, repo)</div><div class="cmp-mktx">Less central</div>
+      <div class="cmp-c">iNAV for ETFs</div><div class="cmp-tw"><span class="lead-tw">unique</span>iNAV calculation for ETF issuers · supports EU listing obligations</div><div class="cmp-mktx">No equivalent</div>
+      <div class="cmp-c">Buy-side analytics</div><div class="cmp-tw">TCA · APA reporting (UK/EU)</div><div class="cmp-mktx">AxessIQ (TCA + scorecards) · Pragma quant tools</div>
+      <div class="cmp-c">Trader UI / EMS</div><div class="cmp-tw">Web GUI · Mobile · Coremont alliance (2025)</div><div class="cmp-mktx">X-Pro (next-gen UI · 1Q26 priority · 85% of PT volume)</div>
+    </div>
+  </div>
+
+  <div class="cmp-section">
+    <h2>Liquidity model — terminology mapping</h2>
+    <p class="intro">When industry coverage talks about each platform's liquidity model, here's the brand-to-architecture translation. Both platforms support all five models; what differs is which they emphasize commercially.</p>
+    <div class="cmp-grid">
+      <div class="cmp-h">Liquidity model</div><div class="cmp-h">Tradeweb branding</div><div class="cmp-h">MarketAxess branding</div>
+      <div class="cmp-c">D2C disclosed</div><div class="cmp-tw">RFQ · RFM · list · PT · RFS · CTT</div><div class="cmp-mktx">Disclosed RFQ · Targeted RFQ · PT (single-dealer + in-competition)</div>
+      <div class="cmp-c">D2D inter-dealer</div><div class="cmp-tw"><span class="lead-tw">dominant</span>Dealerweb · Bilateral Firm Streams · CLOB</div><div class="cmp-mktx">LiquidityEdge (niche, mostly written down)</div>
+      <div class="cmp-c">A2A anonymous</div><div class="cmp-tw">Blast A2A · AllTrade</div><div class="cmp-mktx"><span class="lead-mktx">dominant</span>Open Trading® · the moat</div>
+      <div class="cmp-c">Dealer-initiated</div><div class="cmp-tw">Process · Voice · Sweep variants</div><div class="cmp-mktx"><span class="lead-mktx">explicit channel</span>DRFQ · Mid-X dealer-initiated channel</div>
+      <div class="cmp-c">Session-based</div><div class="cmp-tw"><span class="lead-tw">EU dominant</span>Sweep · Mid-X (TW originated for EU)</div><div class="cmp-mktx">Mid-X matching (2024 EM/EB · 2025 US credit · +163% 1Q26)</div>
+    </div>
+  </div>
+
+  <div class="cmp-section">
+    <h2>Strategic positioning</h2>
+    <div class="cmp-callout">
+      <div class="tw">
+        <h3>Tradeweb plays</h3>
+        <ul>
+          <li><strong>Multi-asset rates dominance.</strong> No competitor approaches TW in UST, EGB, swaps, mortgages, repo. $1.09B rates revenue (53% of total).</li>
+          <li><strong>LSEG integration.</strong> LCH SwapClear pipe, FTSE Russell benchmark distribution (TW source for World Government Bond Index from 2025), Workspace data distribution, Microsoft 10-yr partnership.</li>
+          <li><strong>Brand unification 2025.</strong> Dealerweb / TW Direct / ICD being retired as separate brands → one Tradeweb brand across 4 client sectors.</li>
+          <li><strong>Frontier markets.</strong> Saudi ATS for Sukuk, Brazilian/Malaysian swaps, Mexican repo, BondConnect/CIBM Direct/Swap Connect (Asia), Yieldbroker (Australia).</li>
+          <li><strong>Digital assets first-mover.</strong> Canton Network ($10M+ FY25 revenue), tokenized UST repo against USDC live transaction, Fnality, GS DAP, Alphaledger.</li>
+          <li><strong>Net spotting differentiator.</strong> No MKTX equivalent. $3.75B+ IG ADV in 1Q26.</li>
+          <li><strong>Corporate treasury.</strong> ICD acquisition unique. $96M FY25 revenue (+121.8%). 2025: USTs added to ICD Portal.</li>
+        </ul>
+      </div>
+      <div class="mktx">
+        <h3>MarketAxess plays</h3>
+        <ul>
+          <li><strong>Open Trading® network.</strong> 1,800 firms, $1.2T FY25 volume, 37% of eligible credit, $496M price improvement. Deepest A2A network in credit.</li>
+          <li><strong>Credit specialism.</strong> Founded 2000 as IG specialist; remains credit-first. Larger D2C credit network than TW.</li>
+          <li><strong>EM and international leadership.</strong> 32.8% of revenue international (vs 29.1% in 2021). 90 countries, 6,000 international traders. EM+eurobonds 40.5% of credit ADV. 30 local currencies via 200 dealers. 2025 first electronic Indian government bonds.</li>
+          <li><strong>X-Pro UI investment.</strong> Next-gen trader interface. 1Q25: 85% of PT volume on X-Pro. Pilot for RFQ in Europe ongoing.</li>
+          <li><strong>CP+ data distribution.</strong> S&P Global Bond Reference Data integration (2024). FactSet Workstation (2025).</li>
+          <li><strong>Block + AI dealer selection.</strong> 2024: AI dealer selection for blocks. ADX (175 firms) extends automation to block sizes. 1Q26 block $7B ADV (+35%).</li>
+          <li><strong>RFQ-hub cross-asset.</strong> Q2 2025 majority stake. Bilateral multi-asset RFQ for ETF and derivatives. Pragma (2023) for equities + FX algos.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="cmp-section">
+    <h2>Where they overlap most — and where they diverge</h2>
+    <div class="cmp-callout">
+      <div class="tw" style="border-left-color:#854F0B">
+        <h3>Convergence (overlap)</h3>
+        <ul>
+          <li><strong>US IG credit:</strong> direct head-to-head. TW 25% share, MKTX 16.9% share. Both growing PT. Both running A2A. Both deploying ML pricing and automation.</li>
+          <li><strong>Session-based protocols:</strong> TW Sweep / Mid-X (EU dominant) vs MKTX Mid-X matching (2025 US re-launch +163%). Same architecture, parallel deployments.</li>
+          <li><strong>Composite pricing:</strong> TW Composite+ vs MKTX CP+. Both real-time, multi-asset. CP+ has stronger external distribution (S&P, FactSet); Composite+ has stronger internal-platform integration.</li>
+          <li><strong>Auto-execution:</strong> TW AiEX vs MKTX Auto-X / ADX. Different brand sophistication levels but both targeting 60%+ no-touch on small/mid IG flow.</li>
+          <li><strong>Munis (institutional):</strong> TW Institutional + TW Direct vs MKTX MuniBrokers + ICE Bonds connectivity. Multi-platform reality persists.</li>
+        </ul>
+      </div>
+      <div class="mktx" style="border-left-color:#993556">
+        <h3>Divergence (uncontested ground)</h3>
+        <ul>
+          <li><strong>TW only:</strong> rates ($1.09B revenue), swaps ($500M+ milestone), money markets via ICD ($174M), digital assets (Canton, $10M+), iNAV for ETFs, Net Spotting, r8fin futures-vs-cash, multi-asset PT bridging credit + UST + ETFs.</li>
+          <li><strong>MKTX only:</strong> the deepest credit A2A network (Open Trading® at 1,800 firms vs Blast/AllTrade), the strongest EM dollar credit + EM local currency franchise, X-Pro UI investment focus, Pragma (equities + FX algos) cross-asset extension, RFQ-hub bilateral ETF + derivs RFQ.</li>
+          <li><strong>TW dominant:</strong> rates breadth, multi-asset cross-sell, LSEG integration, frontier markets, digital assets first-mover.</li>
+          <li><strong>MKTX dominant:</strong> credit A2A network density, EM + international franchise, credit-specific UX (X-Pro).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="cmp-section">
+    <h2>Strategic ownership and governance</h2>
+    <div class="cmp-grid">
+      <div class="cmp-h">Dimension</div><div class="cmp-h">Tradeweb</div><div class="cmp-h">MarketAxess</div>
+      <div class="cmp-c">Listing / control</div><div class="cmp-tw">NASDAQ TW · LSEG controls majority (controlled public subsidiary structure)</div><div class="cmp-mktx">NASDAQ MKTX · public, no controlling shareholder</div>
+      <div class="cmp-c">CEO / leadership</div><div class="cmp-tw">Billy Hult CEO (25+ yrs at TW) · Sara Furber CFO · Troy Dixon Co-Head Global Markets (Jan 2025)</div><div class="cmp-mktx">Chris Concannon CEO · Carlos Hernandez (ex-JPM) Chairman · Ilene Fiszel Bieler CFO (May 2024) · McVey retired end-2024 after 25 yrs</div>
+      <div class="cmp-c">M&amp;A 2023-2025</div><div class="cmp-tw">Yieldbroker (Aug 2023, Aus rates) · r8fin (Jan 2024, futures-vs-cash) · ICD (Aug 2024, $785M, corporate cash) · Coremont alliance 2025</div><div class="cmp-mktx">Pragma (2023, equities + FX algos) · ICE Bonds connectivity (2024) · S&P Global integration (2024) · RFQ-hub majority (Q2 2025, ETF + derivs)</div>
+      <div class="cmp-c">Capital allocation discipline</div><div class="cmp-tw">Bolt-on M&amp;A · LSEG-controlled cap allocation framework · no transformational deals (Trumid speculation only)</div><div class="cmp-mktx">$300M ASR completed 1Q26 · $537M cash + investments · disciplined post-LiquidityEdge writedown</div>
+      <div class="cmp-c">Strategic risk</div><div class="cmp-tw">LSEG integration depth could limit independence · multi-asset complexity · Trumid-style HY niche disruption less material</div><div class="cmp-mktx">Credit-only specialization vs TW multi-asset · Trumid HY share erosion · LSEG-TW potential acquisition risk over time horizon</div>
+    </div>
+  </div>
+
+  <div class="cmp-section">
+    <h2>What to watch (12-24 months)</h2>
+    <div class="cmp-callout">
+      <div class="tw">
+        <h3>TW indicators</h3>
+        <ul>
+          <li><strong>ICD cross-sell.</strong> 2025 USTs in ICD Portal as first cross-sell — does this scale?</li>
+          <li><strong>Brand unification execution.</strong> Dealerweb / TW Direct / ICD retirement under one brand. UX and customer impact.</li>
+          <li><strong>Canton Network revenue.</strong> Currently $10M+. Scale trajectory.</li>
+          <li><strong>EM credit catch-up.</strong> Crossed $100M EM revenue 2025. Vs MKTX leadership.</li>
+          <li><strong>Frontier markets traction.</strong> Saudi ATS, Brazilian/Malaysian swaps, Mexican repo, India.</li>
+          <li><strong>Coremont alliance.</strong> Buy-side workflow integration.</li>
+        </ul>
+      </div>
+      <div class="mktx">
+        <h3>MKTX indicators</h3>
+        <ul>
+          <li><strong>X-Pro deployment.</strong> Optimization for US credit. Pilot for RFQ in Europe.</li>
+          <li><strong>Mid-X US credit expansion.</strong> 1Q26 +163% — sustainability and share gain.</li>
+          <li><strong>Targeted block trading rollout.</strong> Extended to US credit Q2 2025. AI dealer selection adoption.</li>
+          <li><strong>RFQ-hub integration.</strong> ETF and derivatives bilateral RFQ uptake.</li>
+          <li><strong>US credit market share recovery.</strong> 16.9% with -30bps in 1Q26 — the strategic question.</li>
+          <li><strong>EM local currency growth.</strong> 1Q26 EM local +49% record. India electronic launched 2025.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="page-footer">Reference compiled May 2026. Self-contained HTML — no external dependencies. Based on TW FY2025 10-K (Feb 5 2026), TW 2025 Annual Report, MKTX FY2025 10-K, MKTX 2025 Proxy, and 1Q26 earnings decks.</footer>
+</div>
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+const TIER_COLORS={ch:'#D85A30',ac:'#7F77DD',p:'#1D9E75',lp:'#BA7517',t:'#D4537E',c:'#888780',pt:'#378ADD'};
+const TIER_LABELS={ch:'Channel / Sector',ac:'Asset class',p:'Protocol',lp:'Liquidity pool',t:'Tool / AI',c:'Connectivity',pt:'Post-trade'};
+const TIER_ORDER=['ch','ac','p','lp','t','c','pt'];
+const TIER_BANDS=[
+  {id:'ch',label:'1 · Client sectors / channels',y:56},
+  {id:'ac',label:'2 · Asset classes',y:146},
+  {id:'p',label:'3 · Execution protocols',y:238},
+  {id:'lp',label:'4 · Liquidity pools',y:406},
+  {id:'t',label:'5 · Tools · pricing · AI',y:506},
+  {id:'c',label:'6 · Connectivity',y:674},
+  {id:'pt',label:'7 · Post-trade',y:774}
+];
+
+// ============================================================
+// LIQUIDITY MODEL TAGS
+// Maps each protocol/pool/channel to one or more liquidity models.
+// Models: d2c (disclosed dealer-to-client), d2d (anonymous inter-dealer),
+// a2a (anonymous all-to-all), dealer (dealer-initiated), session (scheduled match)
+// ============================================================
+const LM_INFO={
+  d2c:{name:'D2C disclosed',desc:'Disclosed dealer-to-client. Name give-up; client is taker, dealers compete on firm prices. The workhorse model — both TW and MKTX use the same name. Cover prices feed TCA. Relationship pricing applies.',twTerm:'Disclosed RFQ / RFM / list / PT',mktxTerm:'Disclosed RFQ / Targeted RFQ / PT'},
+  d2d:{name:'D2D inter-dealer',desc:'Anonymous inter-dealer wholesale. Dealers and PTFs only (some buy-side increasingly). Tightest spreads in market. The hedge venue for sell-side auto-quoters. TW dominates with Dealerweb; MKTX has limited D2D via LiquidityEdge (mostly written down).',twTerm:'Dealerweb · Bilateral Firm Streams · CLOB',mktxTerm:'LiquidityEdge (niche)'},
+  a2a:{name:'A2A anonymous',desc:'All-to-all anonymous. Any participant — dealer, hedge fund, ETF AP, asset manager — can be price-maker. Different brand names but conceptually identical: TW = Blast A2A / AllTrade ($4.7B record ADV 1Q26); MKTX = Open Trading® (1,800 firms, $1.2T FY25, 37% of eligible credit, $496M price improvement). The biggest microstructure shift in credit since electronification began.',twTerm:'Blast A2A · AllTrade · Sweep+Rematch',mktxTerm:'Open Trading® (the moat)'},
+  dealer:{name:'Dealer-initiated',desc:'Dealer pings client/market. Dealer with axe pushes inquiry rather than client soliciting quotes. Critical for inventory management and risk transfer.',twTerm:'Process Trade · Voice · Sweep variants',mktxTerm:'DRFQ · Mid-X dealer-initiated channel'},
+  session:{name:'Session-based',desc:'Scheduled mid-point match. Concentrates liquidity in time rather than space. Anonymous, full-size interest at scheduled times; crosses at fair-value mid. Ideal for size you don\'t want to broadcast in continuous markets.',twTerm:'Sweep · Mid-X (TW originated for EU)',mktxTerm:'Mid-X matching (2024 EM/EB · 2025 US credit)'}
+};
+
+const TW_LM={
+  // Channels
+  'ch-twi':['d2c','a2a'],'ch-dw':['d2d','session'],'ch-twd':['a2a','d2c'],
+  // Asset classes (most touch all models depending on protocol)
+  'ac-rates':['d2c','d2d','a2a','session'],'ac-credit':['d2c','a2a','session','dealer'],'ac-mm':['d2c','dealer'],'ac-derivs':['d2c','d2d'],'ac-etf':['d2c','a2a'],'ac-other':['d2c','dealer'],
+  // Protocols
+  'p-rfq':['d2c'],'p-rfm':['d2c'],'p-stream':['d2c','d2d'],'p-session':['session','a2a'],'p-pt':['d2c'],'p-list':['d2c','a2a'],'p-a2a':['a2a'],'p-process':['dealer','d2d'],'p-compress':['d2c'],'p-netspot':['d2c','d2d'],'p-snap':['d2d','d2c'],'p-aiex':['d2c','a2a','d2d','session','dealer'],
+  // Liquidity pools
+  'lp-d2c':['d2c'],'lp-d2d':['d2d'],'lp-a2a':['a2a'],'lp-midx':['session','a2a'],'lp-retail':['a2a','d2c']
+};
+
+const MKTX_LM={
+  // Channels
+  'mch-inst':['d2c','a2a','session','dealer'],'mch-eu':['d2c','a2a','session'],'mch-le':['d2d'],'mch-bondt':['d2c','a2a'],
+  // Asset classes
+  'mac-ig':['d2c','a2a','session','dealer'],'mac-hy':['d2c','a2a'],'mac-em':['d2c','a2a','session'],'mac-eb':['d2c','a2a','session'],'mac-muni':['d2c','a2a'],'mac-ust':['d2c','d2d'],'mac-eqfx':['d2c'],'mac-etf':['d2c'],
+  // Protocols
+  'mp-rfq':['d2c'],'mp-ot':['a2a'],'mp-block':['d2c','dealer'],'mp-pt-sd':['d2c'],'mp-pt-ic':['d2c'],'mp-list':['d2c'],'mp-drfq':['dealer'],'mp-midx':['session','a2a','dealer'],'mp-autox':['d2c','a2a'],'mp-adx':['d2c','a2a'],'mp-live':['d2c'],'mp-process':['dealer'],'mp-targeted':['d2c'],'mp-aiblock':['d2c','dealer'],
+  // Liquidity pools
+  'mlp-d2c':['d2c'],'mlp-ot':['a2a'],'mlp-block':['d2c','dealer'],'mlp-midx':['session','a2a'],'mlp-le':['d2d']
+};
+
+// ============================================================
+// PLATFORM: TRADEWEB
+// ============================================================
+const TW_NODES={
+'ch-twi':{tier:'ch',x:50,y:68,w:240,h:46,label:'Institutional sector',sub:'Disclosed D2C · $1.28B FY25',
+  overview:'Flagship client sector. $1,275.5M FY2025 revenue (+23.1%). Disclosed D2C across rates, credit, equities, money markets. The 10-K explicitly notes brand unification — Dealerweb, TW Direct, and ICD being retired as separate brands and unified under one Tradeweb brand.',
+  sections:[['Who trades','Asset managers, hedge funds, insurance, central banks/sovereigns, regional dealers. ~3,000+ total clients.'],['Protocols','RFQ (TW pioneered 1998), RFM, RFS (Request-for-Stream), list, compression, Blast A2A, CTT, portfolio trading, inventory-based, AiEX. Full menu.'],['Regulatory','CFTC SEF for swaps, ESMA MTF in EU, FCA MTF in UK, ATS in U.S. for cash bonds. 2025: launched ATS for Sukuk and SAR-denominated debt in Saudi Arabia.'],['1Q26','Global IRS ADV $1,399B (+60%); UST ADV $283B; 25.0% IG share; PT ADV $4.2B record.']]},
+'ch-dw':{tier:'ch',x:580,y:68,w:240,h:46,label:'Wholesale sector (Dealerweb)',sub:'IDB · $401M FY25',
+  overview:'Wholesale client sector — formerly Dealerweb brand. $400.8M FY2025 revenue (+3.9%). 50%+ growth in e-participants since 2020. Dealerweb brand being retired in 2025 unification.',
+  sections:[['Who trades','Primary dealers, regional banks, PTFs (Citadel Securities, Jane Street, Hudson River, XTX). Nearly all wholesale clients also trade through institutional and retail.'],['Lead products','TBA MBS, specified pools, securitized products, global credit, U.S. Treasuries, repurchase agreements, USD swaps, U.S. ETFs, equity derivatives.'],['Protocols','Directed streams (Bilateral Firm Streams for OTR UST), CLOB, Sweep (session-based), Voice + hybrid for blocks.'],['Why dealers depend on it','Sell-side auto-quoters use Dealerweb book as hedge venue — within milliseconds of winning a client RFQ on Institutional, dealer offsets risk on Dealerweb.']]},
+'ch-twd':{tier:'ch',x:1110,y:68,w:240,h:46,label:'Retail (TW Direct) + Corporates (ICD)',sub:'Wealth + treasury · $243M FY25',
+  overview:'Retail $146.5M (+2.3%) plus Corporates $95.9M (+121.8%) FY2025. ICD acquired Aug 2024 ($785M) added corporate treasury sector. 2025: USTs added to ICD Portal beginning expansion of corporates into broader Tradeweb suite.',
+  sections:[['Retail (formerly TW Direct)','Hundreds of regional broker-dealers, RIAs, wirehouses (Morgan Stanley, Merrill, UBS), self-directed (Schwab, Fidelity via white-label). Munis dominate by line count. Acquired BondDesk 2013, Nasdaq US fixed income 2021.'],['Corporates (formerly ICD)','Institutional money market funds. Corporate treasurers research and trade MMFs via ICD Portal. 2025: USTs added. ICD Portfolio Analytics for AI-driven aggregation/monitoring.'],['Brand unification 2025','Both being retired as separate brands.']]},
+
+'ac-rates':{tier:'ac',x:50,y:158,w:190,h:46,label:'Rates · $1.09B',sub:'UST · EGB · TBA · repo · IRS',
+  overview:'Rates revenue $1.09B FY2025 (+20.8%) — 53% of total. Most heavily electronified asset class.',
+  sections:[['Sub-products','UST, EGB (Bunds, OATs, BTPs), Gilts, JGBs, ACGBs, SSAs/agencies, TIPS/OATi, mortgages (TBA, specified pools, CMOs), repo (GC, specials, tri-party, FICC-cleared, sponsored, bilateral), bills, discount notes.'],['Conventions','USTs in 32nds. EGBs in decimals. TBAs in 32nds with monthly settlement. Spread pricing for off-the-runs.'],['Asia expansion','BondConnect (2017), CIBM Direct (2020), Southbound BondConnect (2021), Swap Connect (2023). 2025: first CTT in Brazilian swaps, launched Malaysian swaps.']]},
+'ac-credit':{tier:'ac',x:272,y:158,w:190,h:46,label:'Credit · $488M',sub:'IG · HY · EM · munis',
+  overview:'Credit revenue $488M FY2025 (+6.3%). PT and A2A are credit-led innovations. EM annual revenue crossed $100M in 2025.',
+  sections:[['Sub-products','USD IG (~75% of US corp market), USD HY, EUR/GBP credit, EM sovereign+corp, convertibles, munis, structured (CLO/ABS/CMBS/RMBS), CDX/CDS.'],['Conventions','IG on spread; HY outright price; munis on yield. T+1 corp, T+2 muni, T+7+ loans.'],['1Q26','25.0% IG share; 9.8% HY share; PT $4.2B record (+40%+).']]},
+'ac-mm':{tier:'ac',x:494,y:158,w:190,h:46,label:'Money Markets · $174M',sub:'CP · CDs · bills · repo · MMFs',
+  overview:'Money markets $174M FY2025 (+50.9%) — boosted by full year of ICD basis-point commissions on MMF average daily balances (acquired Aug 2024).',
+  sections:[['Sub-products','CP, CDs, T-bills, FRNs, discount notes, time deposits. Repo (overnight/term/cleared/bilateral). MMFs via ICD Portal.'],['ICD impact','Aug 2024 acquisition added corporate treasury MMF flow. 2025: USTs available on ICD Portal as first cross-sell into broader TW products.'],['Mexican repo (2025)','Launched fully digital trading solution for Mexican repurchase agreements.']]},
+'ac-derivs':{tier:'ac',x:716,y:158,w:190,h:46,label:'Swaps & derivatives',sub:'IRS · swaptions · CDX',
+  overview:'Part of Rates revenue. Crossed $500M annual swaps revenue milestone in 2025.',
+  sections:[['Sub-products','IRS (USD SOFR, EUR €STR, GBP SONIA, JPY TONA), OIS, basis, x-ccy, inflation, MAC swaps. Vol: swaptions, caps/floors. Listed: UST/Bund/BTP futures.'],['Why most are cleared','Dodd-Frank and EMIR mandate clearing for standard IRS, CDX, swaptions. LCH/CME/Eurex.'],['1Q26','Global IRS ADV $1,399B (+60%); 24.1% market share; Swaps RFM ADV $104.5B record.']]},
+'ac-etf':{tier:'ac',x:938,y:158,w:190,h:46,label:'ETFs (in Equities $127M)',sub:'FI · equity · iNAV',
+  overview:'Equities revenue $127M FY2025 (+21.9%) — ETFs + equity derivatives. Global ETF ADV $10.5B in 1Q26 (+48% y/y).',
+  sections:[['Sub-products','FI ETFs (LQD, HYG, AGG, TLT, MUB, EMB, BNDX). EU UCITS. Equity ETFs (sector, country, factor, thematic).'],['iNAV for ETFs','Real-time multi-asset class portfolio calculation produces intraday net asset values for ETF issuers — supports market surveillance and EU listing obligations.'],['Asia ETF push','Nov 2024: collaboration with Tokyo Stock Exchange; new direct link with TSE RFQ platform for Japanese ETFs.']]},
+'ac-other':{tier:'ac',x:1160,y:158,w:190,h:46,label:'Other · digital assets',sub:'Canton + crypto + multi-leg',
+  overview:'Other revenue $36M FY2025 (+47.7%) — primarily digital asset revenue from Canton Network validation services. Crossed $10M digital asset revenue milestone in 2025.',
+  sections:[['Canton Network','TW serves as Super Validator and Validator on Global Synchronizer. 2025: live on-chain financing of tokenized USTs vs USDC. Canton Coins began trading Nov 2025.'],['Strategic alliances','Digital Asset (minority stake), Goldman Sachs (GS DAP), DRW, Fnality (Series C), Securitize, Alphaledger. Dec 2025: fully electronic retail brokered CD auction on-chain via Alphaledger.'],['Multi-leg packages','Curve trades, butterflies, ASW (bond + IRS), switches.']]},
+
+'p-rfq':{tier:'p',x:50,y:250,w:170,h:50,label:'RFQ',sub:'TW pioneered 1998',
+  overview:'TW pioneered RFQ in 1998. Disclosed competitive auction. Deployed across all rates markets and asset classes.',
+  sections:[['How it works','Client sends RFQ to N dealers (3-7). Firm bid/offer responses. Client lifts winner. Disclosed name give-up.'],['RFQ Edge (2024)','Deployed 2024: applies advanced portfolio trading analytics to RFQ in U.S. credit markets, allowing better-informed trade decisions.'],['When to use','Default for liquid/mid-liquid trades. 70-90% of small/mid IG, agency, MBS, FX, ETF tickets.'],['AI / automation','Tightest integration with AiEX, Ai-Price, SNAP+ (IRS dealer selection). 60-80% no-touch on small/mid IG.']]},
+'p-rfm':{tier:'p',x:276,y:250,w:170,h:50,label:'RFM',sub:'Two-way · direction-hidden',
+  overview:'Two-way price request — dealer prices both bid AND offer without knowing direction. "Particularly effective in global interest rate trading" (10-K).',
+  sections:[['How it works','Client requests bid AND offer for given size. Dealer prices both. Client lifts whichever side they wanted.'],['When to use','Large/sensitive size where revealing direction would move market. Standard for cleared IRS in size, swaptions, large credit blocks.'],['1Q26','Swaps RFM ADV $104.5B record.']]},
+'p-stream':{tier:'p',x:502,y:250,w:170,h:50,label:'Streaming · CLOB · RFS',sub:'Continuous · firm prices',
+  overview:'Continuous firm pricing protocols. Includes Streaming (CTT), Request-for-Stream (RFS), Click-to-Trade, Central Limit Order Book (CLOB), and Bilateral Firm Streams for OTR UST.',
+  sections:[['Variants','RFS lets multiple dealers show continuously updating rates during a request window. CLOB allows clients to trade on firm bids/offers and place resting orders anonymously. Bilateral Firm Streams (OTR UST wholesale) give matched-principal access to multiple directed liquidity pools.'],['When to use','Liquid benchmark instruments: OTR USTs, on-the-run EGBs, TBA, FI ETFs.'],['Dealer side','Auto-quoters live here. Hedge venues for client RFQs.']]},
+'p-session':{tier:'p',x:728,y:250,w:170,h:50,label:'Sweep + Rematch',sub:'TW session-based',
+  overview:'Sweep — TW\'s session-based protocol per the 10-K. Concentrates liquidity at specified time and price. Fills the gap between voice brokering and fully electronic order book trading.',
+  sections:[['Sweep','Clients enter orders to be matched against opposite orders at specified time/price. Anonymous. Powered by broker relationships, technology, and pricing from overall TW network.'],['Rematch','Allows dealers to send accepted-but-unmatched Sweep orders to the all-to-all network as anonymous RFQ. Pre-set window. Connects wholesale liquidity to institutional and retail pools.'],['When to use','Markets with thin continuous liquidity. EUR IG credit, USD munis, off-the-runs.']]},
+'p-pt':{tier:'p',x:954,y:250,w:170,h:50,label:'Portfolio Trading',sub:'Single-price basket',
+  overview:'PT supports rebalancing of passive portfolios and ETFs. Clients obtain competitive prices and trade on net present value on a full basket of securities. ~25% of US IG flow.',
+  sections:[['How it works','Client uploads basket (50-1000+ lines). 2-3 dealers compete with single-price quotes. Client picks one winner.'],['When to use','Index rebalances, ETF AP create/redeem, factor tilts, TLH cycles.'],['1Q26','Global PT ADV $4.2B record (+40%+).']]},
+'p-list':{tier:'p',x:1180,y:250,w:170,h:50,label:'List trading',sub:'Multi-line per-CUSIP',
+  overview:'Multi-line workflow: many trades at once, prices from multiple dealers per CUSIP. Hedging at one time. "Saving significant manual effort compared to executing on the telephone" (10-K).',
+  sections:[['How it works','N lines as one request, but each line is its own auction. Different dealers can win different lines.'],['When to use','Heterogeneous baskets where dealer expertise varies meaningfully per name. SSA, munis, HY.']]},
+'p-a2a':{tier:'p',x:50,y:308,w:170,h:50,label:'Blast A2A',sub:'AllTrade · anon · open',
+  overview:'TW\'s Blast all-to-all protocol. Trades exposed to all liquidity providers simultaneously. Used in global credit (US IG, US HY, European credit, other corporate bonds). Alert/inquiry monitors notify of opportunities. Combinable with AiEX. 1Q26: AllTrade ADV $4.7B record.',
+  sections:[['How it works','Anonymous. Client RFQ inquiries to all market participants. Single or list inquiries; full or partial fills.'],['When to use','Off-the-runs, odd-lots, names where natural other side is buy-side.'],['Buy-side opportunity','PMs running excess cash earn liquidity premia by responding.']]},
+'p-process':{tier:'p',x:276,y:308,w:170,h:50,label:'Inventory + Voice',sub:'Less liquid · hybrid',
+  overview:'Combines inventory-based protocol (LPs submit range of bids/offers, not real-time, but indicate where they\'ll trade — most commonly in less liquid security-specific markets) with voice-brokered products in wholesale (UST, MBS, munis, repurchase agreements).',
+  sections:[['Inventory-based','LPs submit range of bids and offers. Counterparties execute. Used in less liquid credit and MM marketplaces.'],['Voice','Wholesale voice brokers provide anonymity and insight for sell-side traders, and high-touch relationships and market understanding.']]},
+'p-compress':{tier:'p',x:502,y:308,w:170,h:50,label:'Compression',sub:'Up to 200 line items',
+  overview:'IRS compression tool: clients submit up to 200 line items to liquidity providers for simultaneous list pricing, executed/cleared/reported in one transaction. Reduces risk and clearing costs. Customizable for non-standard or bespoke swaps.',
+  sections:[['How it works','Multilateral cycle. Participants submit portfolios. Engine finds netting opportunities; produces replacement trades.'],['Why it wins','Reduces gross notional 10-30x. Reduces SA-CCR EAD, leverage ratio, op risk.']]},
+'p-netspot':{tier:'p',x:728,y:308,w:170,h:50,label:'Net spotting',sub:'Spread + UST hedge auction',
+  overview:'Trade credit on spread + simultaneously hedge in UST via competitive auction. TW differentiator. 1Q26: IG Net Spot ADV $3.75B; HY ~$1.7B record.',
+  sections:[['How it works','Client trades corporate at spread; platform simultaneously runs multi-dealer auction for UST hedge. Both legs print, but spread locked before hedge.'],['Why it wins','Eliminates basis risk. Tightens execution because hedge auction is competitive vs single dealer setting hedge level.']]},
+'p-snap':{tier:'p',x:954,y:308,w:170,h:50,label:'r8fin / spreading',sub:'Futures vs cash · UST algos',
+  overview:'r8fin technology (acquired Jan 2024): clients create orders to trade futures vs government bonds at specified levels. Algorithm uses passive and aggressive strategies across cash and futures venues. Plus dealer algorithmic suite for UST execution over time horizons.',
+  sections:[['Futures vs cash spreading (r8fin)','Mix of passive and aggressive trading strategies across cash and futures venues to achieve client target.'],['Dealer algo suite','Asset managers, hedge funds, institutional investors execute UST over time horizons while maintaining dealer relationships and benefiting from bank counterparty risk protections.']]},
+'p-aiex':{tier:'p',x:1180,y:308,w:170,h:50,label:'AiEX',sub:'Auto execution rules',
+  overview:'TW Automated Intelligent Execution. Pre-programmed execution rules tailored to client trading strategy. The biggest driver of buy-side trader productivity in fixed income.',
+  sections:[['How it works','Clients use AiEX to automate high volumes of small/basic trades and apply to complex execution strategies. Rules engine.'],['Benefits','Efficient accelerated execution, better optimization to fine-tune dealer selection, enhanced automated compliance.'],['Industry impact','60-80% no-touch on small/mid IG flow.']]},
+
+'lp-d2c':{tier:'lp',x:50,y:418,w:200,h:50,label:'D2C disclosed',sub:'30+ dealers · institutional',
+  overview:'Dealer-to-Client name give-up. Largest pool by volume.',
+  sections:[['Who is in it','Asset managers, hedge funds, central banks, insurers on demand. 30+ dealers per asset class on supply.'],['Price discovery','Per-RFQ competitive auction. Cover prices feed TCA and Ai-Price.']]},
+'lp-d2d':{tier:'lp',x:325,y:418,w:200,h:50,label:'D2D inter-dealer',sub:'Dealerweb · CLOB · anon',
+  overview:'Inter-dealer wholesale pool — formerly Dealerweb brand. Anonymous CLOB. Tightest spreads in market on benchmarks.',
+  sections:[['Who is in it','Primary dealers, regional banks, PTFs (Citadel Securities, Jane Street, Hudson River, XTX, DRW, Tower).'],['Why tightest spreads','Every dealer auto-quoter offsets here within milliseconds.']]},
+'lp-a2a':{tier:'lp',x:600,y:418,w:200,h:50,label:'Blast A2A pool',sub:'Anonymous · all-to-all',
+  overview:'Anonymous A2A pool. Buy-side firms can be price-makers. 1Q26 AllTrade ADV $4.7B record.',
+  sections:[['Mechanism','Trades exposed to all liquidity providers simultaneously. Anonymous until print.'],['When useful','Off-the-runs, odd-lots, portfolio rebalance flows.']]},
+'lp-midx':{tier:'lp',x:875,y:418,w:200,h:50,label:'Sweep / Mid-X pool',sub:'Session-based · zero spread',
+  overview:'TW\'s session-based mid-match pool. Anonymous, scheduled, zero-spread cross at fair-value mid.',
+  sections:[['How it works','Buy-side enters anonymous full-size interest at scheduled times. Crosses at composite mid.'],['Strongest fit','EUR IG credit dominant. USD smaller. Munis.']]},
+'lp-retail':{tier:'lp',x:1150,y:418,w:200,h:50,label:'Retail odd-lot + ICD',sub:'TW Direct + ICD MMFs',
+  overview:'Retail wealth pool (TW Direct) + corporate cash MMF pool (ICD). Both being unified under Tradeweb brand 2025.',
+  sections:[['Retail (TW Direct)','Hundreds of broker-dealers, RIAs, wirehouses, self-directed.'],['ICD','Corporate treasury MMF investments. 2025 expansion: USTs added.']]},
+
+'tl-aiex':{tier:'t',x:50,y:518,w:200,h:50,label:'AiEX engine',sub:'Pre-programmed rules',
+  overview:'Pre-programmed execution rules tailored to client strategy. The execution rules engine itself.',
+  sections:[['What it does','Stores rules per desk, fund, asset, size bucket. Conditions trigger auto-fire with chosen panel and accept thresholds.'],['Benefits','Efficient accelerated execution, fine-tune dealer selection, enhanced automated compliance.']]},
+'tl-aip':{tier:'t',x:325,y:518,w:200,h:50,label:'Ai-Price + SNAP+',sub:'ML pricing + IRS dealer ML',
+  overview:'Ai-Price: bond pricing engine using data science. Real-time and end-of-day reference pricing for ~30,000 U.S. corporate bonds and ~1 million U.S. municipal bonds, regardless of trade frequency. Powers AiEX, PT, TCA. SNAP+: companion solution for IRS that bridges historical trade data with AI to produce dealer list most likely to offer best terms; works with RFQ and RFM.',
+  sections:[['Ai-Price coverage','30,000 U.S. corporate + 1M U.S. municipal bonds.'],['SNAP+','Intelligent automated optimization for IRS dealer selection.']]},
+'tl-comp':{tier:'t',x:600,y:518,w:200,h:50,label:'Composite+',sub:'Real-time fair-value tape',
+  overview:'Real-time composite price tape. Continuous fair-value reference.',
+  sections:[['Inputs','Streaming dealer prices, RFQ winners and covers, runs/IOIs, observed trades, related-asset prices.'],['Output','Continuous bid/mid/ask per CUSIP, sub-second refresh.']]},
+'tl-rfqp':{tier:'t',x:875,y:518,w:200,h:50,label:'RFQ+ scoring',sub:'Dealer panel selection',
+  overview:'Per-dealer scoring model for dealer panel selection.',
+  sections:[['Inputs','Hit rate, response latency, cover quality, axe activity, inventory positioning, size bucket fit.'],['Output','Ranked dealer list per CUSIP per side per size bucket. Used by AiEX.']]},
+'tl-tca':{tier:'t',x:1150,y:518,w:200,h:50,label:'TCA + APA',sub:'Best-ex + MiFID II reporting',
+  overview:'Multi-benchmark transaction cost analysis (TCA): vs Composite+ mid, winning cover, peer prints, time-weighted mid. Per-trade scorecards, dealer scorecards, RTS 27/28 reports under MiFID II. APA reporting service in UK and EU for off-venue/OTC trading post-trade transparency. APA also provides venue reporting for LSEG\'s FX trading venues.',
+  sections:[['TCA','Per-trade and aggregated. Feeds Ai-Price retraining and RFQ+ updates.'],['APA','UK+EU APA reporting service for MiFID II post-trade transparency on bonds and derivatives, including products not offered by TW.']]},
+'tl-axes':{tier:'t',x:50,y:576,w:200,h:50,label:'Axes · inventory',sub:'Runs · IOIs · positioning',
+  overview:'Aggregated dealer positioning feed.',
+  sections:[['Inputs','Parsed dealer runs, IOIs, observed inventory shifts.'],['Where used','Rematch matching, RFQ+ ranking, trader pre-trade view.']]},
+'tl-risk':{tier:'t',x:325,y:576,w:200,h:50,label:'Pre-trade risk + iNAV',sub:'Limits · DV01 · ETF NAV',
+  overview:'Pre-trade limits checking plus iNAV calculation for ETFs.',
+  sections:[['Limits','Credit lines, DV01, CVA, gross/net notional, regulatory/concentration limits.'],['iNAV','Real-time multi-asset class portfolio calculation produces intraday net asset values for ETF issuers — supports market surveillance and EU listing obligations.']]},
+'tl-curve':{tier:'t',x:600,y:576,w:200,h:50,label:'Curve & spread tools',sub:'YAS · ASW · CDS basis',
+  overview:'Curve and spread tooling embedded inline in the order ticket.',
+  sections:[['Tools','YAS (yield-and-spread), asset-swap (ASW = bond + IRS), butterfly, CDS basis, switch PV, multi-leg package PV.'],['Repo OIS curves','TW was first electronic platform to make OIS curves available during repo trade negotiation.']]},
+'tl-optim':{tier:'t',x:875,y:576,w:200,h:50,label:'Portfolio optimizer',sub:'PT · compression · TLH',
+  overview:'Builds optimal baskets for portfolio trading, compression, and tax-loss harvesting.',
+  sections:[['Solves for','Tracking error, factor exposure, liquidity tier, price impact, TLH, turnover constraints.']]},
+'tl-data':{tier:'t',x:1150,y:576,w:200,h:50,label:'Market data + LSEG',sub:'TRACE · MSRB · BVAL · LSEG',
+  overview:'Aggregated market data. 50+ products coverage. Provides LSEG with real-time feeds for multiple FI and derivatives products under license; LSEG distributes to its customers via Workspace and direct feeds. 2025: FTSE Russell made price source change to include TW FTSE benchmark closing prices for USTs, EGBs, Gilts in FTSE\'s flagship World Government Bond Index.',
+  sections:[['Sources','TRACE, MSRB RTRS, BVAL, ICE Data, dealer streams, internal venue prints, CDS prints (Markit), benchmark indices.'],['LSEG distribution','TW data flows into LSEG Workspace for distribution.'],['FTSE benchmarks','TW provides UST, UK Gilt, EGB closing prices per IOSCO and BMR standards. 2025: FTSE made TW the source for World Government Bond Index.']]},
+
+'cn-oms':{tier:'c',x:50,y:686,w:240,h:50,label:'OMS / EMS',sub:'Aladdin · CRD · AIM',
+  overview:'Buy-side OMS/EMS connectivity. Direct integrations with majority of available OMSs.',
+  sections:[['Vendors','Aladdin (~30%), Charles River (CRD), Bloomberg AIM, SimCorp Dimension, Eze, LongView, Murex.'],['What they do','Stage orders, run pre-trade compliance, route to execution, receive fills, manage allocations. Coremont (2025 alliance): integrating TW global FI execution into Coremont Clarion platform.']]},
+'cn-fix':{tier:'c',x:403,y:686,w:240,h:50,label:'FIX / API gateway',sub:'FIX · REST · WebSocket',
+  overview:'Connectivity layer. FIX 4.4 dominant; FIX 5.0 SP2 in some flows. REST + WebSocket for newer integrations. Direct API for FCM credit checks for cleared derivatives trading.',
+  sections:[['FIX message types','NewOrderSingle (D), QuoteRequest (R) for RFQ, Quote (S), ExecutionReport (8), AllocationInstruction (J).']]},
+'cn-deal':{tier:'c',x:756,y:686,w:240,h:50,label:'Dealer pricing engine',sub:'Auto-quoter · algo desk',
+  overview:'Sell-side auto-quoter and algo desk. Other side of every electronic ticket.',
+  sections:[['What it does','Receives RFQs and stream quotes, prices via internal curves + AI overlays + axe positioning, returns firm quote, hedges in real time.'],['Vendor naming','Goldman Marquee, Citi Velocity, JPM Athena, Barclays BARX, Morgan Stanley Matrix, BAML Mercury.']]},
+'cn-gui':{tier:'c',x:1109,y:686,w:240,h:50,label:'GUI · 14 datacenters',sub:'Trader desktop · global infra',
+  overview:'Trader desktop UIs and retail portals. 14 datacenters across U.S., UK, Japan, Australia. Cloud hosting for ICD Portal and similar. ISO/IEC 27001 + NIST cybersecurity framework.',
+  sections:[['Institutional','TW web trader desktop with click-to-trade, list views, run viewers, allocation screens, charts.'],['Retail','Schwab BondSource, Fidelity Bond Trading — white-labeled or referencing TW Direct.']]},
+
+'pt-ctm':{tier:'pt',x:50,y:786,w:240,h:50,label:'CTM · allocations',sub:'DTCC CTM · OASYS',
+  overview:'Confirmation matching and sub-account allocations.',
+  sections:[['What it does','DTCC CTM dominant. OASYS for older flow. Sub-account splits, ticket enrichment, STP into custodian (BNY, State Street, JPMC, Citi).']]},
+'pt-rep':{tier:'pt',x:403,y:786,w:240,h:50,label:'Trade reporting',sub:'TRACE · MSRB · APAs',
+  overview:'Regulatory trade reporting. Real-time on most cash, batched on some.',
+  sections:[['US cash','TRACE for corporates, USTs. Real-time mostly, T+15min for size-capped. MSRB RTRS for munis (15-min).'],['EU/UK','APAs under MiFID II. TW operates an APA service in UK and EU.'],['Recent','PT prints carry PT flag.']]},
+'pt-ccp':{tier:'pt',x:756,y:786,w:240,h:50,label:'Central clearing',sub:'LCH · CME · ICE · FICC',
+  overview:'Central clearing for derivatives and certain cash flows. LSEG owns LCH; TW-LCH integration is core.',
+  sections:[['CCPs','LCH SwapClear (~95% IRS share), CME (IRS, CDX, futures), ICE (CDX), Eurex (EUR), FICC (UST cash and repo).'],['Mandate','Standard IRS in major currencies, CDX, swaptions.']]},
+'pt-ven':{tier:'pt',x:1109,y:786,w:240,h:50,label:'SEF · MTF · OTF · ATS',sub:'Regulatory venue wrapper',
+  overview:'Venue rulebook regulatory wrapper.',
+  sections:[['Regimes','CFTC SEF (US, swaps), ESMA MTF/OTF (EU), FCA MTF (UK post-Brexit), DCM (futures), ATS (US cash bonds). 2025: launched ATS for Sukuk and SAR-denominated debt in Saudi Arabia.']]},
+'pt-set':{tier:'pt',x:50,y:844,w:240,h:50,label:'Settlement',sub:'Fedwire · DTC · Euroclear',
+  overview:'Cash settlement. T+1 in US (post-2024), T+2 in EU.',
+  sections:[['Venues','Fedwire (UST), DTC (US corp/munis), Euroclear/Clearstream (EUR + intl).'],['Tokenized USTs','2025: live on-chain financing of tokenized USTs vs USDC via Canton Network.']]},
+'pt-mw':{tier:'pt',x:403,y:844,w:240,h:50,label:'Lifecycle · MarkitWire',sub:'Confirms · novations',
+  overview:'OTC derivative lifecycle.',
+  sections:[['Vendors','MarkitWire (now S&P Global) — dominant confirmation platform.'],['Coverage','Confirmations, novations, unwinds, partial terminations, resets.']]},
+'pt-mar':{tier:'pt',x:756,y:844,w:240,h:50,label:'Margin & collateral',sub:'VM · IM · UMR',
+  overview:'VM/IM, UMR phases, tri-party.',
+  sections:[['UMR','Phase 6 brought IM to $50M AANA threshold in 2022.']]},
+'pt-sur':{tier:'pt',x:1109,y:844,w:240,h:50,label:'Surveillance + best-ex',sub:'MAR · RTS 27/28',
+  overview:'Surveillance and best-execution.',
+  sections:[['Surveillance','Trade replay for regulators. MAR (EU). Order-book replay.'],['Best-ex','RTS 27/28. Client TCA reports. APA reporting for off-venue trades.']]}
+};
+
+const TW_ADJ_RAW=[
+['ch-twi',['ac-rates','ac-credit','ac-mm','ac-derivs','ac-etf','ac-other']],
+['ch-dw',['ac-rates','ac-credit','ac-mm','ac-derivs']],
+['ch-twd',['ac-credit','ac-etf','ac-other','ac-mm']],
+['ac-rates',['p-rfq','p-rfm','p-stream','p-session','p-process','p-netspot','p-snap','p-aiex']],
+['ac-credit',['p-rfq','p-pt','p-list','p-a2a','p-session','p-process','p-aiex','p-netspot']],
+['ac-mm',['p-rfq','p-stream','p-process','p-aiex']],
+['ac-derivs',['p-rfq','p-rfm','p-stream','p-compress','p-process','p-aiex']],
+['ac-etf',['p-rfq','p-stream','p-pt','p-aiex']],
+['ac-other',['p-rfq','p-stream','p-process','p-aiex']],
+['p-rfq',['lp-d2c','lp-a2a','lp-retail','tl-rfqp','tl-aip','tl-axes','tl-tca','tl-aiex']],
+['p-rfm',['lp-d2c','tl-aip','tl-curve','tl-aiex']],
+['p-stream',['lp-d2c','lp-d2d','lp-retail','tl-comp','tl-aip','tl-data']],
+['p-session',['lp-midx','lp-d2c','lp-a2a','tl-comp','tl-aiex']],
+['p-pt',['lp-d2c','tl-optim','tl-comp','tl-tca','tl-aiex']],
+['p-list',['lp-d2c','lp-a2a','tl-rfqp','tl-axes','tl-aiex']],
+['p-a2a',['lp-a2a','lp-retail','tl-comp','tl-rfqp']],
+['p-process',['lp-d2c','lp-d2d','tl-tca','tl-axes','tl-risk']],
+['p-compress',['lp-d2c','tl-optim','tl-curve']],
+['p-netspot',['lp-d2c','lp-d2d','tl-curve','tl-aip']],
+['p-snap',['lp-d2c','lp-d2d','tl-axes','tl-rfqp']],
+['p-aiex',['lp-d2c','lp-d2d','lp-a2a','lp-midx','lp-retail','tl-aip','tl-comp','tl-rfqp','tl-risk','tl-tca','tl-data']],
+['tl-data',['tl-comp','tl-aip','tl-tca']],
+['tl-comp',['tl-aip','tl-rfqp']],
+['tl-tca',['tl-rfqp','tl-aip']],
+['tl-axes',['tl-rfqp']],
+['tl-curve',['tl-aip']],
+['tl-optim',['tl-curve']],
+['cn-oms',['ch-twi','ch-dw','tl-tca','tl-risk','tl-aiex']],
+['cn-fix',['ch-twi','ch-dw','ch-twd','tl-data','tl-aip']],
+['cn-deal',['ch-twi','ch-dw','tl-aip','tl-curve']],
+['cn-gui',['ch-twi','ch-dw','ch-twd','tl-axes','tl-comp']],
+['pt-ctm',['ac-rates','ac-credit','ac-mm','ac-etf','ac-other','cn-oms','cn-fix']],
+['pt-rep',['ac-credit','ac-mm','ac-rates','ac-derivs','cn-fix']],
+['pt-ccp',['ac-derivs','ac-rates','ac-credit','cn-deal']],
+['pt-ven',['ac-derivs','ac-credit','ac-rates','cn-fix']],
+['pt-set',['ac-rates','ac-credit','ac-mm','ac-etf','ac-other','cn-oms']],
+['pt-mw',['ac-derivs','cn-fix']],
+['pt-mar',['ac-derivs','ac-rates','cn-deal']],
+['pt-sur',['ac-rates','ac-credit','ac-mm','ac-derivs','ac-etf','ac-other','cn-fix']]
+];
+const TW_FB_RAW=[['pt-rep',['tl-data','tl-tca','tl-aip','tl-comp']],['pt-ctm',['tl-tca']],['pt-sur',['tl-tca']]];
+const TW_WORKFLOWS={
+'aiex-rfq':{name:'AiEX no-touch IG RFQ',desc:'Small IG ticket auto-routes from OMS through AiEX rules. Ai-Price caps cover, RFQ+ ranks dealers, RFQ fires and auto-accepts.',steps:['cn-oms','ac-credit','tl-aiex','tl-rfqp','tl-aip','p-rfq','ch-twi','lp-d2c','tl-tca','pt-ctm','pt-rep','pt-set']},
+'credit-pt':{name:'Credit portfolio trade',desc:'200-line IG basket optimized in OMS, sized vs Composite+, dealers ranked by RFQ+, fired as single-price PT.',steps:['cn-oms','ac-credit','tl-optim','tl-comp','tl-rfqp','p-pt','ch-twi','lp-d2c','tl-tca','pt-ctm','pt-rep','pt-set']},
+'netspot':{name:'Net spotting',desc:'IG credit on spread; platform runs simultaneous multi-dealer hedge auction in UST.',steps:['cn-oms','ac-credit','tl-curve','tl-aip','p-netspot','ch-twi','lp-d2c','ac-rates','lp-d2d','pt-rep','pt-set']},
+'cleared-irs':{name:'Cleared IRS (RFM → SEF → LCH)',desc:'10y SOFR swap. RFM hides direction. SEF wrapper. SNAP+ for dealer selection. MarkitWire confirms; LCH SwapClear novates.',steps:['cn-oms','ac-derivs','tl-curve','tl-risk','tl-aip','p-rfm','ch-twi','lp-d2c','pt-ven','pt-mw','pt-ccp','pt-mar']},
+'ust-clob':{name:'Inter-dealer UST CLOB',desc:'Dealer auto-quoter or PTF executes anonymously on Dealerweb CLOB. r8fin or Bilateral Firm Streams variants. Cleared at FICC.',steps:['cn-deal','ac-rates','tl-data','p-stream','ch-dw','lp-d2d','pt-ccp','pt-set']},
+'compress':{name:'IRS compression',desc:'Multilateral cycle nets offsetting positions across counterparties. Up to 200 line items in one transaction. Reduces SA-CCR.',steps:['cn-oms','ac-derivs','tl-optim','p-compress','ch-twi','lp-d2c','pt-mw','pt-ccp','pt-mar']},
+'midx':{name:'Sweep / Mid-X',desc:'Scheduled mid-point match. Rematch sends unmatched orders to A2A. EUR IG credit dominant.',steps:['cn-oms','ac-credit','tl-comp','p-session','ch-twi','lp-midx','pt-rep','pt-set']},
+'snap':{name:'Rematch / Blast A2A',desc:'Off-the-run CUSIP. Inventory + axes feed Rematch protocol; matched orders flow to Blast A2A.',steps:['cn-gui','ac-credit','tl-axes','p-session','p-a2a','ch-twi','lp-a2a','pt-rep','pt-set']},
+'muni-retail':{name:'Muni retail (TW Direct)',desc:'Wealth advisor pulls 25 muni bonds. Composite+ for muni fair-value. MSRB RTRS reporting.',steps:['cn-gui','ac-credit','tl-comp','p-rfq','ch-twd','lp-retail','pt-rep','pt-set']},
+'etf-rfq':{name:'ETF RFQ + iNAV',desc:'AP RFQs FI ETF block. iNAV calculation for fair-value reference. Optimizer compares ETF lift vs in-kind basket. Platform prices basket-hedge leg simultaneously.',steps:['cn-oms','ac-etf','tl-optim','tl-risk','tl-curve','p-rfq','ch-twi','lp-d2c','ac-credit','pt-ctm','pt-set']},
+'repo':{name:'Sponsored / FICC repo',desc:'Buy-side repo via FICC sponsored access. RFQ to clearing dealers. OIS curves available during negotiation. FICC novates.',steps:['cn-oms','ac-rates','tl-curve','p-rfq','ch-twi','lp-d2c','pt-ccp','pt-mar','pt-set']},
+'dealer-quote':{name:'Dealer auto-quote → hedge',desc:'Dealer pricing engine receives client RFQ on TW Institutional, prices, fills, hedges instantly on Dealerweb CLOB.',steps:['cn-deal','ac-rates','tl-aip','p-rfq','ch-twi','lp-d2c','p-stream','ch-dw','lp-d2d','pt-ccp']},
+'icd-corp':{name:'ICD corporate cash + UST',desc:'Corporate treasurer via ICD Portal. MMF order; 2025: USTs added enabling first cross-sell.',steps:['cn-oms','ac-mm','p-rfq','ch-twd','lp-retail','pt-ctm','pt-set']}
+};
+
+// ============================================================
+// PLATFORM: MARKETAXESS
+// ============================================================
+const MKTX_NODES={
+'mch-inst':{tier:'ch',x:50,y:68,w:300,h:46,label:'MKTX Institutional (X-Pro)',sub:'Global D2C · 13K traders',
+  overview:'Flagship D2C credit-first marketplace. ~13,000 active traders globally; 1,000+ international firms in 90 countries; 6,000 international traders. X-Pro is the next-gen UI.',
+  sections:[['Three strategic channels','Per 10-K and 1Q26 deck: Client-Initiated, Portfolio Trading, Dealer-Initiated.'],['X-Pro (1Q26 priority)','Optimization for US credit ongoing; pilot for RFQ in Europe ongoing. 1Q25: 85% of PT volume on X-Pro.'],['FY2025 scale','$1.2T Open Trading volume = 37% of eligible. $496M price improvement.']]},
+'mch-eu':{tier:'ch',x:430,y:68,w:280,h:46,label:'MKTX Europe',sub:'BMTF MTF · Trax post-trade',
+  overview:'European platform with Trax post-trade reporting. EUR/GBP credit, eurobonds. EM + eurobonds = 40.5% of credit ADV (vs 32.7% in 2020).',
+  sections:[['Trax','EU APA reporting under MiFID II. Transaction reporting under EMIR. Reference data services.'],['What flows here','EUR/GBP credit, eurobonds. 1Q26: block ADV +45% record, PT ADV +90% record.']]},
+'mch-le':{tier:'ch',x:790,y:68,w:240,h:46,label:'LiquidityEdge',sub:'UST D2C · niche',
+  overview:'UST D2C. Acquired 2019, mostly written down. UST microstructure didn\'t transfer cleanly from credit RFQ DNA.',
+  sections:[['Reality','UST D2C streaming-driven, PTF-dominant. Hard to dislodge TW + Dealerweb. 1Q26 govt bonds ADV $29.5B (+14%).']]},
+'mch-bondt':{tier:'ch',x:1110,y:68,w:240,h:46,label:'BondTicker + RFQ-hub',sub:'Data + ETF/derivs RFQ',
+  overview:'BondTicker: TRACE distribution + analytics, sold to dealers, buy-side, vendors. RFQ-hub (Q2 2025 majority stake): bilateral multi-asset multi-dealer RFQ for ETF and derivatives markets.',
+  sections:[['BondTicker','TRACE + parsing + dealer runs aggregation. Drives MKTX market data revenue.'],['RFQ-hub','Closed Q2 2025. Cross-asset extension into ETFs and derivatives. "Critical solution for trading ETFs growing rapidly in fixed income markets" (proxy).']]},
+
+'mac-ig':{tier:'ac',x:50,y:158,w:140,h:46,label:'USD IG · 16.9% share',sub:'Core franchise',
+  overview:'Core franchise. 1Q26: 16.9% US Credit market share (-30bps). PT share 19.8%. Block ADV $4.9B (+28%).',
+  sections:[['Why core','Founded 2000 as IG specialist. Largest IG dealer panel and buy-side network.'],['Trends','Share under pressure from TW (PT) and Trumid (HY-overlap).']]},
+'mac-hy':{tier:'ac',x:200,y:158,w:140,h:46,label:'USD HY',sub:'Open Trading strong',
+  overview:'HY credit. Open Trading particularly successful here.',
+  sections:[['OT fit','HY benefits more from A2A — dealer continuous liquidity is thinner.'],['vs Trumid','MKTX leads in HY size; Trumid leads in HY-only innovation pace.']]},
+'mac-em':{tier:'ac',x:350,y:158,w:200,h:46,label:'EM credit (hard + local)',sub:'Strongest international',
+  overview:'EM dollar credit + EM local currency. Strongest international franchise. EM+eurobonds 40.5% of credit ADV. EM local currency in 30 currencies via 200 broker-dealers. 2025: first electronic trading for Indian government bonds.',
+  sections:[['Why MKTX wins EM','EM dealer liquidity thin in non-benchmark names. Open Trading + buy-side response structurally well-fit.'],['Local currency push','30 currencies. India electronic launched 2025. Latin America, CEE, MEA, APAC.']]},
+'mac-eb':{tier:'ac',x:560,y:158,w:140,h:46,label:'Eurobonds',sub:'EUR/GBP · BMTF',
+  overview:'1Q26: Block ADV $591M (+45% record); PT ADV (+90% record).',
+  sections:[['Microstructure','EU credit more fragmented than US. Sessions and Mid-X help.'],['Competition','TW Sweep dominant in EU; Bloomberg BMTF terminal-driven.']]},
+'mac-muni':{tier:'ac',x:710,y:158,w:140,h:46,label:'Municipals',sub:'MuniBrokers + ICE Bonds',
+  overview:'Munis via MuniBrokers (acquired 2021). 1Q26: Muni ADV $659M (+11%). 2024: connectivity with ICE Bonds for muni distribution to wealth management.',
+  sections:[['MuniBrokers','Institutional muni A2A.'],['ICE Bonds connectivity (2024)','Greater efficiency and access to deeper muni liquidity, particularly in institutional and wealth management.']]},
+'mac-ust':{tier:'ac',x:860,y:158,w:160,h:46,label:'US Treasuries',sub:'LiquidityEdge · niche',
+  overview:'UST D2C via LiquidityEdge. Niche vs TW.',
+  sections:[['Mechanics','Streaming venue with click-to-trade.'],['Reality','LiquidityEdge mostly written down.']]},
+'mac-eqfx':{tier:'ac',x:1030,y:158,w:160,h:46,label:'Equities · FX',sub:'Pragma · algo trading',
+  overview:'Equities and FX algorithmic trading via 2023 Pragma acquisition. Reports under "Other Commissions" line. Powers Mid-X re-launch in 2025.',
+  sections:[['Pragma (2023)','Equities + FX algo trading. AI-driven execution algorithms across all key product areas. Low-latency tech stack.'],['Strategic role','Cross-asset extension of credit-first DNA.']]},
+'mac-etf':{tier:'ac',x:1200,y:158,w:150,h:46,label:'ETFs + derivatives',sub:'RFQ-hub Q2 2025',
+  overview:'ETFs and derivatives via Q2 2025 RFQ-hub majority stake. Bilateral multi-asset multi-dealer RFQ.',
+  sections:[['RFQ-hub','Bilateral RFQ for ETF and derivatives. Per 2025 proxy: "critical solution for the trading of ETFs, which are growing rapidly in the fixed income markets."'],['ICE MSCI MKTX index futures (2024)','Tradable corporate bond index futures designed to help investors hedge corporate bond exposure.']]},
+
+'mp-rfq':{tier:'p',x:50,y:250,w:170,h:50,label:'Disclosed RFQ',sub:'Workhorse · client-initiated',
+  overview:'Disclosed dealer-to-client RFQ. Original MKTX product, still largest single protocol by volume.',
+  sections:[['How it works','Client sends RFQ to dealer panel. Dealers respond firm. Client lifts winner. Disclosed name give-up.'],['Targeted RFQ (2024)','New functionality: directs inquiries to selected counterparties, enhancing execution quality and reducing information leakage relative to broader requests.'],['When to use','Default for liquid IG, HY, EM, eurobonds, munis.']]},
+'mp-ot':{tier:'p',x:240,y:250,w:170,h:50,label:'Open Trading®',sub:'1,800 firms · $1.2T · 37%',
+  overview:'Open Trading® launched 2013. Award-winning all-to-all. FY2025: 1,800 firms, $1.2T credit volume = 37.0% of eligible credit, $496M price improvement. THE MKTX moat.',
+  sections:[['How it works','Anonymous responders supplement disclosed dealer panel. Buy-side, hedge funds, ETF APs, alt LPs all interact in all-to-all environment.'],['FY2025 metrics','1,800 firms. $1.2T volume = 37% of eligible. $496M price improvement.'],['Why it wins','Operational simplicity for buy-side. Network density. Buy-side response captures spread.'],['Coverage','Including EM local currency in 30 currencies via 200 broker-dealers.']]},
+'mp-block':{tier:'p',x:430,y:250,w:170,h:50,label:'Block trading',sub:'High-touch · $7B record',
+  overview:'1Q26: Record $7B block ADV (+35%). US Credit block +28% record; EM block +47% record; Eurobonds block +45% record.',
+  sections:[['Targeted block (2024)','Launched targeted block trading solution for EM and eurobonds in 2024; extended to U.S. credit Q2 2025. AI-driven dealer selection tool predicts which counterparties most likely to provide competitive pricing.'],['Why it is growing','Combines block size discovery with electronic STP. Increasingly automated via ADX.']]},
+'mp-pt-sd':{tier:'p',x:620,y:250,w:170,h:50,label:'Single-dealer PT',sub:'PT to one dealer',
+  overview:'Single-dealer portfolio trading.',
+  sections:[['How','Client uploads basket. Sends to one dealer for single-price quote. Faster than in-competition; less competitive on price.']]},
+'mp-pt-ic':{tier:'p',x:810,y:250,w:170,h:50,label:'In-competition PT',sub:'19.8% US Credit PT share',
+  overview:'In-competition PT. 2-3 dealers compete. 1Q26: 19.8% US Credit PT share, +45% y/y. 1Q25: 85% of PT volume on X-Pro.',
+  sections:[['How','Client sends basket to 2-3 dealers in competition. Single-price per dealer. Client picks best.'],['vs TW','TW pioneered PT and has larger share. MKTX caught up: +45% US credit, +90% eurobonds in 1Q26.']]},
+'mp-list':{tier:'p',x:1000,y:250,w:170,h:50,label:'List trading',sub:'Multi-line per-CUSIP',
+  overview:'Multi-line RFQ; each line competes individually.',
+  sections:[['When to use','Heterogeneous baskets. SSA, munis, HY where dealer axes are name-specific.']]},
+'mp-drfq':{tier:'p',x:1190,y:250,w:160,h:50,label:'Dealer RFQ (DRFQ)',sub:'Dealer-initiated · $1.9B',
+  overview:'Dealer-initiated RFQ. 1Q26: Dealer-initiated ADV $1.9B record.',
+  sections:[['How','Dealer with axe sends inquiry to clients. X-Pro integration of automation enhances DRFQ workflow.']]},
+'mp-midx':{tier:'p',x:50,y:308,w:170,h:50,label:'Mid-X matching',sub:'2024 EM/eurobonds · 2025 US credit',
+  overview:'Anonymous mid-point matching sessions for dealers, powered by CP+. 2024 launch for EM/eurobonds. 2025: re-launched on Pragma technology in U.S. credit. 1Q26: $17.5B (+163% record).',
+  sections:[['Timeline','2024: launched for EM and eurobonds. Q2 2025: re-launched on Pragma technology in U.S. credit. 1Q26: $17.5B volume +163% record.'],['Why it is growing','Concentrates liquidity in time vs space. Direct response to TW Sweep dominance in EU.']]},
+'mp-autox':{tier:'p',x:240,y:308,w:170,h:50,label:'Auto-X',sub:'258 active firms',
+  overview:'Auto-X automation engine. 1Q26: 258 active automation client firms. Automation = 13% of total credit volume, 30% of trade count. 21% 3-year CAGR in firms.',
+  sections:[['How','Rules-based engine. Per-ticket conditions trigger auto-fire to chosen panel with auto-accept thresholds.'],['Adoption','258 active firms. Strong demand: trading volume up 25% in 2024 per proxy.']]},
+'mp-adx':{tier:'p',x:430,y:308,w:170,h:50,label:'Adaptive Auto-X (ADX)',sub:'175 firms · ML-driven',
+  overview:'ML-driven extension of Auto-X to larger and block-size tickets. 1Q26: 175 clients enabled.',
+  sections:[['How','ML model layer over Auto-X. Adapts dealer selection, accept thresholds, execution timing based on market regime.'],['Extends','Reaches into block-adjacent ticket sizes. Bridge between automation and high-touch block trading.']]},
+'mp-live':{tier:'p',x:620,y:308,w:170,h:50,label:'Live Markets',sub:'Streaming protocol',
+  overview:'Streaming/CLOB protocol for liquid US Credit names.',
+  sections:[['How','Continuous firm pricing. Click-to-trade against streams.']]},
+'mp-process':{tier:'p',x:810,y:308,w:170,h:50,label:'Process · negotiation',sub:'Voice-electronic blocks',
+  overview:'Voice-negotiated trades captured electronically.',
+  sections:[['How','Trader and counterparty agree size/price by phone or chat. Trade routed for compliance, regulatory wrapper, reporting, STP.']]},
+'mp-targeted':{tier:'p',x:1000,y:308,w:160,h:50,label:'Targeted RFQ',sub:'Direct to selected dealers',
+  overview:'2024: targeted RFQ functionality directs inquiries to selected counterparties. Enhances execution quality and reduces information leakage relative to broader requests.',
+  sections:[['Why','Information leakage to losing dealers can be expensive. Targeted RFQ reduces this for specific use cases.']]},
+'mp-aiblock':{tier:'p',x:1190,y:308,w:160,h:50,label:'AI dealer selection',sub:'Block-trading 2024',
+  overview:'2024: AI-driven trading protocol designed to make it easier for clients to execute block trades. Predicts which counterparties most likely to provide competitive pricing.',
+  sections:[['Use','Block trade dealer panel selection. Combined with targeted RFQ enhances block execution.']]},
+
+'mlp-d2c':{tier:'lp',x:50,y:418,w:240,h:50,label:'D2C disclosed',sub:'Largest credit network',
+  overview:'D2C disclosed pool. The deepest credit dealer-to-client network.',
+  sections:[['Who is in it','13,000 active traders, 1,000+ international firms, 90 countries.']]},
+'mlp-ot':{tier:'lp',x:340,y:418,w:240,h:50,label:'Open Trading® pool',sub:'1,800 LPs · $496M price impr',
+  overview:'Open Trading® pool. 1,800 unique LPs. $496M FY25 price improvement.',
+  sections:[['Composition','Dealers, hedge funds, ETF APs, asset managers, alt LPs. Anonymous.'],['Why it leads','First-mover in credit A2A.']]},
+'mlp-block':{tier:'lp',x:630,y:418,w:240,h:50,label:'Block negotiation pool',sub:'$7B record · ADX',
+  overview:'1Q26 record $7B block ADV. Combines high-touch dealer panel with ADX automation.',
+  sections:[['Mechanism','Dealer block desk + buy-side firms with size capacity.']]},
+'mlp-midx':{tier:'lp',x:920,y:418,w:200,h:50,label:'Mid-X session pool',sub:'$17.5B 1Q26',
+  overview:'Mid-X session pool. EM/eurobonds (2024 launch) + US credit (2025 re-launch on Pragma).',
+  sections:[['Mechanism','Buy-side enters anonymous interest at scheduled times. Crosses at CP+ mid.']]},
+'mlp-le':{tier:'lp',x:1170,y:418,w:180,h:50,label:'LiquidityEdge UST',sub:'Niche',
+  overview:'UST D2C pool. Niche vs TW.',
+  sections:[['Reality','LiquidityEdge mostly written down.']]},
+
+'mt-cpplus':{tier:'t',x:50,y:518,w:200,h:50,label:'CP+®',sub:'Munis 2024 · S&P · FactSet',
+  overview:'CP+® flagship real-time pricing engine. 2024: extended to munis. Powers Mid-X. 2024: integrated into S&P Global Evaluated Bond Pricing. 2025: integrated into FactSet Workstation.',
+  sections:[['Coverage','IG, HY, EM, eurobonds, munis (2024). Powers Mid-X across asset classes.'],['Distribution','S&P Global Bond Reference Data integration (2024). FactSet Workstation (2025) — in-terminal access for asset managers, hedge funds, wealth advisors, institutional traders.']]},
+'mt-bondt':{tier:'t',x:325,y:518,w:200,h:50,label:'BondTicker',sub:'TRACE + analytics',
+  overview:'BondTicker — TRACE distribution + analytics. Standalone revenue stream.',
+  sections:[['What it does','Real-time and historical TRACE with analytics, dealer runs aggregation, market color.']]},
+'mt-axessiq':{tier:'t',x:600,y:518,w:200,h:50,label:'AxessIQ',sub:'Buy-side trader analytics',
+  overview:'AxessIQ — buy-side trader analytics suite. Pre-trade and post-trade for credit traders.',
+  sections:[['Coverage','TCA, dealer scorecards, axe identification, CP+ benchmarking.']]},
+'mt-ax-eng':{tier:'t',x:875,y:518,w:200,h:50,label:'Auto-X engine',sub:'Rules engine',
+  overview:'Auto-X rules engine.',
+  sections:[['Rules','Per-desk, per-fund, per-asset, per-size-bucket. Calls CP+, RFQ scoring, AxessIQ.']]},
+'mt-adx-ml':{tier:'t',x:1150,y:518,w:200,h:50,label:'ADX ML model',sub:'Adaptive automation',
+  overview:'Adaptive Auto-X ML model. Drives ADX block-size automation.',
+  sections:[['Inputs','Real-time market regime, dealer behavior, axe alignment, recent outcomes.']]},
+'mt-pt-an':{tier:'t',x:50,y:576,w:200,h:50,label:'PT analytics',sub:'Pre-trade basket tools',
+  overview:'PT pre-trade analytics. 1Q26 priority: "leverage enhanced PT analytics in RFQ."',
+  sections:[['Solves for','Tracking error, factor exposure, liquidity tier, dealer balance sheet fit.']]},
+'mt-axes':{tier:'t',x:325,y:576,w:200,h:50,label:'Axes · runs',sub:'Dealer positioning',
+  overview:'Aggregated dealer runs and IOIs.',
+  sections:[['Inputs','Parsed dealer runs, IOIs, observed inventory shifts.']]},
+'mt-pragma':{tier:'t',x:600,y:576,w:200,h:50,label:'Pragma analytics',sub:'Quant + algos · 2023',
+  overview:'Pragma — quant analytics, equities + FX algo trading. Low-latency tech stack. Powers Mid-X re-launch (2025).',
+  sections:[['What it adds','Quant research, equities and FX algo trading, muni TLH workflow.']]},
+'mt-divers':{tier:'t',x:875,y:576,w:200,h:50,label:'CP+ Diversity',sub:'Pricing reliability score',
+  overview:'CP+ Diversity scoring. Measures diversity of pricing inputs.',
+  sections:[['Use','Pre-trade quality flag. Higher diversity = more reliable composite mid.']]},
+'mt-data':{tier:'t',x:1150,y:576,w:200,h:50,label:'Market data',sub:'TRACE · CDS · indices',
+  overview:'Aggregated market data. Input to CP+, AxessIQ, Auto-X.',
+  sections:[['Sources','TRACE, MSRB RTRS, CDS prints (Markit), benchmark indices, dealer streams.']]},
+
+'mc-oms':{tier:'c',x:50,y:686,w:280,h:50,label:'OMS / EMS',sub:'Aladdin · CRD · AIM',
+  overview:'OMS/EMS connectivity for buy-side flow.',
+  sections:[['OMS vendors','Aladdin, CRD, Bloomberg AIM, SimCorp.'],['X-Pro','MKTX next-gen UI alongside OMS routing.']]},
+'mc-fix':{tier:'c',x:340,y:686,w:240,h:50,label:'FIX / API',sub:'FIX · REST · WebSocket',
+  overview:'Connectivity layer.',
+  sections:[['Protocols','FIX 4.4 dominant. REST + WebSocket for newer.']]},
+'mc-deal':{tier:'c',x:590,y:686,w:240,h:50,label:'Dealer pricing engine',sub:'Auto-quoter · DRFQ',
+  overview:'Sell-side auto-quoter.',
+  sections:[['Functions','Receives RFQs/OT inquiries; prices via internal curves; returns firm quote; hedges.']]},
+'mc-xpro':{tier:'c',x:840,y:686,w:240,h:50,label:'X-Pro UI',sub:'Trader desktop · next-gen',
+  overview:'X-Pro — next-gen trader UI. 1Q26 priority: optimization for US credit, Europe pilot.',
+  sections:[['Features','Click-to-trade, RFQ workflow, OT response, block negotiation, ADX configuration, AxessIQ analytics — all in one.']]},
+'mc-portal':{tier:'c',x:1090,y:686,w:260,h:50,label:'Web GUI · mobile',sub:'Trax UI · BondTicker',
+  overview:'Trax post-trade UI, BondTicker dashboards, mobile.',
+  sections:[['Use','Non-OMS path. Trader desktop. Post-trade interfaces.']]},
+
+'mpt-trace':{tier:'pt',x:50,y:786,w:240,h:50,label:'TRACE distribution',sub:'BondTicker · FINRA',
+  overview:'TRACE post-trade reporting and distribution.',
+  sections:[['Mechanism','MKTX-executed trades report to TRACE per FINRA Rule 6730.']]},
+'mpt-trax':{tier:'pt',x:340,y:786,w:240,h:50,label:'Trax post-trade',sub:'EU APA · MiFID II',
+  overview:'Trax — EU post-trade reporting and analytics. APA registered under MiFID II.',
+  sections:[['Coverage','EU bonds, derivs reporting via APA. Transaction reporting under EMIR. Reference data services.']]},
+'mpt-ctm':{tier:'pt',x:630,y:786,w:240,h:50,label:'CTM · allocations',sub:'DTCC CTM · STP',
+  overview:'Confirmation matching and allocations.',
+  sections:[['What','DTCC CTM matching. Sub-account splits. STP into custodian.']]},
+'mpt-msrb':{tier:'pt',x:920,y:786,w:240,h:50,label:'MSRB RTRS',sub:'Muni reporting',
+  overview:'Muni post-trade reporting via MSRB RTRS.',
+  sections:[['Coverage','MuniBrokers and ICE Bonds-routed muni trades.']]},
+'mpt-clear':{tier:'pt',x:50,y:844,w:240,h:50,label:'Clearing',sub:'FICC · DTC',
+  overview:'Clearing for cleared products.',
+  sections:[['CCPs','FICC for UST cash and repo. DTC for cash bonds.']]},
+'mpt-set':{tier:'pt',x:340,y:844,w:240,h:50,label:'Settlement',sub:'Fedwire · DTC · Euroclear',
+  overview:'Cash settlement.',
+  sections:[['Venues','Fedwire, DTC, Euroclear, Clearstream.']]},
+'mpt-comp':{tier:'pt',x:630,y:844,w:240,h:50,label:'Compliance · best-ex',sub:'AxessIQ TCA',
+  overview:'Best-execution and surveillance.',
+  sections:[['Outputs','AxessIQ TCA reports. RTS 27/28 under MiFID II.']]},
+'mpt-pragma':{tier:'pt',x:920,y:844,w:240,h:50,label:'Pragma post-trade',sub:'Quant + TLH',
+  overview:'Pragma-driven post-trade quant analytics.',
+  sections:[['Use','SMA TLH workflow, post-trade attribution.']]}
+};
+
+const MKTX_ADJ_RAW=[
+['mch-inst',['mac-ig','mac-hy','mac-em','mac-eb','mac-muni','mac-eqfx','mac-etf']],
+['mch-eu',['mac-eb','mac-em','mac-ig']],
+['mch-le',['mac-ust']],
+['mch-bondt',['mac-ig','mac-hy','mac-em','mac-eb','mac-etf','mac-eqfx']],
+['mac-ig',['mp-rfq','mp-ot','mp-block','mp-pt-sd','mp-pt-ic','mp-list','mp-drfq','mp-midx','mp-autox','mp-adx','mp-live','mp-process','mp-targeted','mp-aiblock']],
+['mac-hy',['mp-rfq','mp-ot','mp-block','mp-pt-ic','mp-list','mp-autox','mp-adx','mp-process','mp-aiblock']],
+['mac-em',['mp-rfq','mp-ot','mp-block','mp-pt-ic','mp-list','mp-process','mp-midx']],
+['mac-eb',['mp-rfq','mp-ot','mp-pt-sd','mp-pt-ic','mp-list','mp-midx','mp-autox']],
+['mac-muni',['mp-rfq','mp-ot','mp-list']],
+['mac-ust',['mp-rfq','mp-live']],
+['mac-eqfx',['mp-rfq','mp-list','mp-autox','mt-pragma']],
+['mac-etf',['mp-rfq','mp-targeted','mt-pragma']],
+['mp-rfq',['mlp-d2c','mlp-ot','mt-axes','mt-cpplus','mt-ax-eng']],
+['mp-ot',['mlp-ot','mlp-d2c','mt-cpplus','mt-divers','mt-axessiq']],
+['mp-block',['mlp-block','mlp-d2c','mt-adx-ml','mt-axes']],
+['mp-pt-sd',['mlp-d2c','mt-pt-an','mt-cpplus']],
+['mp-pt-ic',['mlp-d2c','mt-pt-an','mt-cpplus','mt-pragma']],
+['mp-list',['mlp-d2c','mlp-ot','mt-axes']],
+['mp-drfq',['mlp-d2c','mt-axes','mt-ax-eng']],
+['mp-midx',['mlp-midx','mt-cpplus','mt-divers','mt-pragma']],
+['mp-autox',['mlp-d2c','mlp-ot','mt-ax-eng','mt-cpplus','mt-axessiq']],
+['mp-adx',['mlp-d2c','mlp-block','mt-adx-ml','mt-ax-eng','mt-cpplus']],
+['mp-live',['mlp-d2c','mlp-le','mt-cpplus','mt-data']],
+['mp-process',['mlp-d2c','mlp-block','mt-axes']],
+['mp-targeted',['mlp-d2c','mt-axes','mt-axessiq']],
+['mp-aiblock',['mlp-block','mlp-d2c','mt-adx-ml']],
+['mt-data',['mt-cpplus','mt-bondt','mt-axessiq']],
+['mt-cpplus',['mt-divers','mt-axessiq','mt-ax-eng','mt-adx-ml']],
+['mt-axessiq',['mt-pragma','mt-pt-an']],
+['mt-axes',['mt-ax-eng','mt-adx-ml']],
+['mc-oms',['mch-inst','mch-eu','mt-axessiq','mt-ax-eng']],
+['mc-fix',['mch-inst','mch-eu','mch-le','mt-data','mt-cpplus']],
+['mc-deal',['mch-inst','mch-eu','mt-cpplus']],
+['mc-xpro',['mch-inst','mt-axessiq','mt-axes','mt-ax-eng']],
+['mc-portal',['mch-inst','mch-eu','mch-bondt']],
+['mpt-trace',['mac-ig','mac-hy','mc-fix','mch-bondt']],
+['mpt-trax',['mac-eb','mac-em','mc-fix']],
+['mpt-ctm',['mac-ig','mac-hy','mac-em','mac-eb','mac-muni','mc-oms']],
+['mpt-msrb',['mac-muni','mc-fix']],
+['mpt-clear',['mac-ust','mac-ig','mac-hy']],
+['mpt-set',['mac-ig','mac-hy','mac-em','mac-eb','mac-muni','mac-ust','mac-eqfx','mac-etf']],
+['mpt-comp',['mac-ig','mac-hy','mac-em','mac-eb','mt-axessiq']],
+['mpt-pragma',['mac-muni','mac-ig','mt-pragma']]
+];
+const MKTX_FB_RAW=[['mpt-trace',['mt-data','mt-axessiq','mt-cpplus','mt-bondt']],['mpt-trax',['mt-data','mt-axessiq']],['mpt-comp',['mt-axessiq']]];
+const MKTX_WORKFLOWS={
+'autox-rfq':{name:'Auto-X no-touch RFQ',desc:'Small IG ticket auto-routes via Auto-X engine. CP+ informs accept threshold. 258 active firms.',steps:['mc-oms','mac-ig','mt-ax-eng','mp-autox','mp-rfq','mch-inst','mlp-d2c','mlp-ot','mt-axessiq','mpt-ctm','mpt-trace','mpt-set']},
+'adx-ml':{name:'Adaptive Auto-X (ADX)',desc:'Larger ticket via ML-driven ADX. 175 firms enabled in 1Q26.',steps:['mc-oms','mac-ig','mt-adx-ml','mp-adx','mp-block','mch-inst','mlp-block','mt-axessiq','mpt-ctm','mpt-trace','mpt-set']},
+'ot-block':{name:'Open Trading block',desc:'Block trade routed to anonymous Open Trading pool. 1,800 LPs respond. $496M FY25 price improvement.',steps:['mc-oms','mac-ig','mp-block','mp-ot','mch-inst','mlp-ot','mt-cpplus','mpt-ctm','mpt-trace','mpt-set']},
+'pt-credit':{name:'Credit PT (in-comp)',desc:'IG basket sent to 2-3 dealers in competition. 1Q26: 19.8% PT share, +45% y/y.',steps:['mc-oms','mac-ig','mt-pt-an','mt-cpplus','mp-pt-ic','mch-inst','mlp-d2c','mt-axessiq','mpt-ctm','mpt-trace','mpt-set']},
+'pt-single':{name:'Single-dealer PT',desc:'IG basket sent to one relationship dealer.',steps:['mc-oms','mac-ig','mt-pt-an','mp-pt-sd','mch-inst','mlp-d2c','mpt-ctm','mpt-trace','mpt-set']},
+'midx-credit':{name:'Mid-X credit session',desc:'Mid-X 2025 re-launch on Pragma technology in U.S. credit. 1Q26 $17.5B (+163%).',steps:['mc-oms','mac-ig','mt-cpplus','mt-divers','mt-pragma','mp-midx','mch-inst','mlp-midx','mpt-trace','mpt-set']},
+'em-hard':{name:'EM hard currency',desc:'EM dollar credit. Open Trading + competitive dealer panel.',steps:['mc-oms','mac-em','mt-cpplus','mp-rfq','mp-ot','mch-inst','mlp-d2c','mlp-ot','mpt-trace','mpt-set']},
+'em-local':{name:'EM local currency',desc:'30 currencies via 200 broker-dealers. India electronic launched 2025.',steps:['mc-oms','mac-em','mp-rfq','mp-ot','mch-inst','mlp-d2c','mpt-trax','mpt-set']},
+'eurobond-pt':{name:'Eurobond PT',desc:'Eurobond PT via BMTF MTF. 1Q26: PT ADV +90% record. Trax post-trade reporting.',steps:['mc-oms','mac-eb','mt-pt-an','mp-pt-ic','mch-eu','mlp-d2c','mpt-trax','mpt-set']},
+'muni-rfq':{name:'Muni / MuniBrokers',desc:'Institutional muni RFQ. 2024 ICE Bonds connectivity. Pragma TLH analytics.',steps:['mc-oms','mac-muni','mt-pragma','mp-rfq','mp-list','mch-inst','mlp-d2c','mpt-msrb','mpt-pragma','mpt-set']},
+'dealer-drfq':{name:'Dealer DRFQ',desc:'Dealer-initiated RFQ. 1Q26: $1.9B record.',steps:['mc-deal','mac-ig','mt-axes','mp-drfq','mch-inst','mlp-d2c','mpt-trace','mpt-set']},
+'rfqhub-etf':{name:'RFQ-hub ETF / derivs',desc:'Q2 2025: bilateral multi-asset multi-dealer RFQ for ETF and derivatives. Cross-asset extension.',steps:['mc-oms','mac-etf','mt-pragma','mp-rfq','mch-bondt','mlp-d2c','mpt-set']},
+'targeted-block':{name:'Targeted block (AI)',desc:'2024: AI-driven dealer selection for blocks. Targeted RFQ to selected counterparties.',steps:['mc-oms','mac-ig','mt-axes','mt-adx-ml','mp-aiblock','mp-targeted','mch-inst','mlp-block','mpt-trace','mpt-set']}
+};
+
+function initPlatform(platformEl,NODES,ADJ_RAW,FB_RAW,WORKFLOWS,arrowId,LM){
+  Object.values(NODES).forEach(n=>{n.cx=n.x+n.w/2;n.cy=n.y+n.h/2;});
+  const svg=platformEl.querySelector('.dd-svg'),tiersG=platformEl.querySelector('.dd-tiers'),edgesG=platformEl.querySelector('.dd-edges'),nodesG=platformEl.querySelector('.dd-nodes'),overlayG=platformEl.querySelector('.dd-overlay'),detail=platformEl.querySelector('.dd-detail'),hint=platformEl.querySelector('.dd-hint'),buildBtn=platformEl.querySelector('[data-build]'),clearBtn=platformEl.querySelector('[data-clear]');
+  TIER_BANDS.forEach(b=>{const t=document.createElementNS(NS,'text');t.setAttribute('x',50);t.setAttribute('y',b.y);t.setAttribute('class','dd-tier');t.textContent=b.label.toUpperCase();tiersG.appendChild(t);});
+  Object.entries(NODES).forEach(([id,n])=>{
+    const g=document.createElementNS(NS,'g');g.setAttribute('class','dd-node');g.setAttribute('data-id',id);g.setAttribute('transform','translate('+n.x+','+n.y+')');
+    const card=document.createElementNS(NS,'rect');card.setAttribute('class','dd-card');card.setAttribute('x',0);card.setAttribute('y',0);card.setAttribute('width',n.w);card.setAttribute('height',n.h);card.setAttribute('rx',4);card.setAttribute('fill','var(--color-background-primary)');card.setAttribute('stroke','var(--color-border-tertiary)');card.setAttribute('stroke-width','0.5');g.appendChild(card);
+    const stripe=document.createElementNS(NS,'rect');stripe.setAttribute('x',0);stripe.setAttribute('y',0);stripe.setAttribute('width',4);stripe.setAttribute('height',n.h);stripe.setAttribute('fill',TIER_COLORS[n.tier]);g.appendChild(stripe);
+    const t1=document.createElementNS(NS,'text');t1.setAttribute('x',14);t1.setAttribute('y',20);t1.setAttribute('font-size','12.5');t1.setAttribute('font-weight','500');t1.setAttribute('fill','var(--color-text-primary)');t1.textContent=n.label;g.appendChild(t1);
+    const t2=document.createElementNS(NS,'text');t2.setAttribute('x',14);t2.setAttribute('y',36);t2.setAttribute('font-size','11');t2.setAttribute('fill','var(--color-text-secondary)');t2.textContent=n.sub;g.appendChild(t2);
+    nodesG.appendChild(g);
+  });
+  const edgeSet=new Set(),edgesByNode={};
+  function addEdge(from,to,fb){
+    if(!NODES[from]||!NODES[to])return;
+    const key=[from,to].sort().join('|');if(edgeSet.has(key))return;edgeSet.add(key);
+    const a=NODES[from],b=NODES[to];
+    const line=document.createElementNS(NS,'line');line.setAttribute('x1',a.cx);line.setAttribute('y1',a.cy);line.setAttribute('x2',b.cx);line.setAttribute('y2',b.cy);line.setAttribute('stroke',fb?'#D85A30':'var(--color-text-tertiary)');line.setAttribute('class','dd-edge'+(fb?' dd-feedback':''));edgesG.appendChild(line);
+    (edgesByNode[from]=edgesByNode[from]||[]).push({line,other:to});
+    (edgesByNode[to]=edgesByNode[to]||[]).push({line,other:from});
+  }
+  ADJ_RAW.forEach(([f,ts])=>ts.forEach(t=>addEdge(f,t,false)));
+  FB_RAW.forEach(([f,ts])=>ts.forEach(t=>addEdge(f,t,true)));
+  let mode='idle',buildPath=[],currentWf=null;
+  function clearAll(){platformEl.querySelectorAll('.dd-node').forEach(n=>n.classList.remove('dd-sel','dd-dim','dd-on'));platformEl.querySelectorAll('.dd-edge').forEach(e=>e.classList.remove('dd-on','dd-dim'));platformEl.querySelectorAll('.dd-chip').forEach(c=>c.classList.remove('dd-active'));overlayG.innerHTML='';}
+  function setDefaultDetail(){detail.innerHTML='<h3>Pick a workflow, click a node, or build your own path</h3><p class="meta">'+Object.keys(NODES).length+' nodes &middot; '+edgeSet.size+' connections &middot; '+Object.keys(WORKFLOWS).length+' workflows</p><p class="ovw">Each node has overview + sections drawn from FY2025 10-Ks and 1Q26 earnings decks.</p>';}
+  function getAnchor(from,to){const dy=to.cy-from.cy,dx=to.cx-from.cx;if(Math.abs(dy)>30){if(dy>0)return{fx:from.cx,fy:from.y+from.h,tx:to.cx,ty:to.y};return{fx:from.cx,fy:from.y,tx:to.cx,ty:to.y+to.h};}if(dx>0)return{fx:from.x+from.w,fy:from.cy,tx:to.x,ty:to.cy};return{fx:from.x,fy:from.cy,tx:to.x+to.w,ty:to.cy};}
+  function renderPath(stepIds,label,narrative){
+    clearAll();
+    platformEl.querySelectorAll('.dd-node').forEach(n=>n.classList.add('dd-dim'));
+    platformEl.querySelectorAll('.dd-edge').forEach(e=>e.classList.add('dd-dim'));
+    stepIds.forEach(id=>{const el=platformEl.querySelector('.dd-node[data-id="'+id+'"]');if(el){el.classList.add('dd-on');el.classList.remove('dd-dim');}});
+    for(let i=0;i<stepIds.length-1;i++){
+      const a=NODES[stepIds[i]],b=NODES[stepIds[i+1]];if(!a||!b)continue;
+      const an=getAnchor(a,b),mx=(an.fx+an.tx)/2,my=(an.fy+an.ty)/2,dx=an.tx-an.fx,dy=an.ty-an.fy,dist=Math.sqrt(dx*dx+dy*dy),curve=Math.min(40,dist*0.18),nx=-dy/(dist||1)*curve,ny=dx/(dist||1)*curve;
+      const path=document.createElementNS(NS,'path');path.setAttribute('d','M '+an.fx+' '+an.fy+' Q '+(mx+nx)+' '+(my+ny)+' '+an.tx+' '+an.ty);path.setAttribute('class','dd-wf-line');path.setAttribute('marker-end','url(#'+arrowId+')');overlayG.appendChild(path);
+    }
+    stepIds.forEach((id,idx)=>{
+      const n=NODES[id];if(!n)return;
+      const cx=n.x+n.w-11,cy=n.y+11;
+      const c=document.createElementNS(NS,'circle');c.setAttribute('cx',cx);c.setAttribute('cy',cy);c.setAttribute('r',9.5);c.setAttribute('class','dd-wf-badge-bg');c.setAttribute('stroke','#fff');c.setAttribute('stroke-width','1.2');overlayG.appendChild(c);
+      const t=document.createElementNS(NS,'text');t.setAttribute('x',cx);t.setAttribute('y',cy+3.5);t.setAttribute('text-anchor','middle');t.setAttribute('class','dd-wf-badge-tx');t.textContent=(idx+1).toString();overlayG.appendChild(t);
+    });
+    const stepsHtml=stepIds.map(id=>{const n=NODES[id];if(!n)return '';return '<li><strong>'+n.label+'</strong> <span style="color:var(--color-text-tertiary)">&mdash; '+TIER_LABELS[n.tier]+'</span></li>';}).join('');
+    detail.innerHTML='<h3>'+label+'</h3><p class="meta">'+stepIds.length+' steps &middot; ordered path</p><p class="ovw">'+narrative+'</p><ol>'+stepsHtml+'</ol>';
+  }
+  function selectWorkflow(wfId){
+    const wf=WORKFLOWS[wfId];if(!wf)return;
+    mode='wf';buildPath=[];currentWf={id:wfId,wf:wf};
+    if(buildBtn)buildBtn.classList.remove('dd-active');
+    platformEl.querySelectorAll('.dd-chip').forEach(c=>c.classList.toggle('dd-active',c.getAttribute('data-wf')===wfId));
+    platformEl.querySelectorAll('.dd-lm').forEach(c=>c.classList.remove('dd-active'));
+    if(hint)hint.textContent='Workflow shown. Click any numbered step to drill in (workflow stays visible).';
+    renderPath(wf.steps,wf.name,wf.desc);
+  }
+  function showWorkflowStep(stepIdx){
+    if(!currentWf)return;
+    const wf=currentWf.wf,id=wf.steps[stepIdx],node=NODES[id];if(!node)return;
+    platformEl.querySelectorAll('.dd-node').forEach(n=>n.classList.remove('dd-sel'));
+    const sel=platformEl.querySelector('.dd-node[data-id="'+id+'"]');
+    if(sel)sel.classList.add('dd-sel');
+    const total=wf.steps.length;
+    const prevHtml=stepIdx>0?'<button data-step-nav="'+(stepIdx-1)+'" style="margin-right:6px">&larr; Step '+stepIdx+'</button>':'';
+    const nextHtml=stepIdx<total-1?'<button data-step-nav="'+(stepIdx+1)+'">Step '+(stepIdx+2)+' &rarr;</button>':'';
+    const backHtml='<button data-step-back="1" style="margin-left:6px">Back to workflow overview</button>';
+    const stepsHtml=wf.steps.map((sid,i)=>{const n=NODES[sid];if(!n)return '';const isCurrent=i===stepIdx;return '<li style="'+(isCurrent?'background:#FAECE7;padding:3px 6px;border-radius:4px;border-left:2px solid #D85A30;':'')+'"><strong'+(isCurrent?' style="color:#4A1B0C"':'')+'>Step '+(i+1)+': '+n.label+'</strong> <span style="color:var(--color-text-tertiary)">&mdash; '+TIER_LABELS[n.tier]+'</span></li>';}).join('');
+    const sectionsHtml=(node.sections||[]).map(([h,p])=>'<div class="sec"><h4>'+h+'</h4><p>'+p+'</p></div>').join('');
+    const lmTags=(LM&&LM[id])||[];
+    const lmHtml=lmTags.length?'<div class="conn-row" style="margin-top:8px"><strong>Liquidity model:</strong> '+lmTags.map(t=>'<span style="color:'+LM_INFO[t].color+'">'+LM_INFO[t].name+'</span>').join(' &middot; ')+'</div>':'';
+    detail.innerHTML='<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px"><h3 style="margin:0">Step '+(stepIdx+1)+' of '+total+': '+node.label+'</h3><span style="font-size:12px;color:var(--color-text-tertiary)">Workflow: '+wf.name+'</span></div><p class="meta">'+TIER_LABELS[node.tier]+' &middot; in workflow context &mdash; full path remains visible above</p><p class="ovw">'+node.overview+'</p>'+sectionsHtml+lmHtml+'<div style="margin:14px 0;padding:10px 12px;background:var(--color-background-primary);border-radius:6px;border:0.5px solid var(--color-border-tertiary)"><div style="font-size:11px;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px">Step navigation</div>'+prevHtml+nextHtml+backHtml+'</div><div class="conn-block"><div style="font-size:11px;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px">Full workflow steps</div><ol style="padding-left:24px">'+stepsHtml+'</ol></div>';
+    detail.querySelectorAll('[data-step-nav]').forEach(b=>{b.addEventListener('click',e=>{e.stopPropagation();showWorkflowStep(parseInt(b.getAttribute('data-step-nav'),10));});});
+    detail.querySelectorAll('[data-step-back]').forEach(b=>{b.addEventListener('click',e=>{e.stopPropagation();renderPath(wf.steps,wf.name,wf.desc);});});
+  }
+  function selectLiquidityModel(lmKey){
+    const info=LM_INFO[lmKey];if(!info||!LM)return;
+    mode='lm';buildPath=[];currentWf=null;
+    if(buildBtn)buildBtn.classList.remove('dd-active');
+    platformEl.querySelectorAll('.dd-chip').forEach(c=>c.classList.remove('dd-active'));
+    platformEl.querySelectorAll('.dd-lm').forEach(c=>c.classList.toggle('dd-active',c.getAttribute('data-lm')===lmKey));
+    overlayG.innerHTML='';
+    const matchSet=new Set();
+    Object.keys(NODES).forEach(id=>{const tags=LM[id]||[];if(tags.indexOf(lmKey)>=0)matchSet.add(id);});
+    platformEl.querySelectorAll('.dd-node').forEach(n=>{const id=n.getAttribute('data-id');if(matchSet.has(id)){n.classList.add('dd-on');n.classList.remove('dd-dim','dd-sel');}else{n.classList.add('dd-dim');n.classList.remove('dd-on','dd-sel');}});
+    platformEl.querySelectorAll('.dd-edge').forEach(e=>{e.classList.add('dd-dim');e.classList.remove('dd-on');});
+    Object.entries(edgesByNode).forEach(([nodeId,arr])=>{if(!matchSet.has(nodeId))return;arr.forEach(({line,other})=>{if(matchSet.has(other)){line.classList.add('dd-on');line.classList.remove('dd-dim');}});});
+    const groupedMatches={};
+    matchSet.forEach(id=>{const t=NODES[id].tier;if(!t)return;(groupedMatches[t]=groupedMatches[t]||[]).push(NODES[id].label);});
+    const matchesHtml=TIER_ORDER.filter(t=>groupedMatches[t]).map(t=>'<div class="conn-row"><strong>'+TIER_LABELS[t]+':</strong> '+groupedMatches[t].join(' &middot; ')+'</div>').join('');
+    detail.innerHTML='<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px"><h3 style="margin:0;color:'+info.color+'">'+info.name+'</h3><span style="font-size:12px;color:var(--color-text-tertiary)">Liquidity model layer</span></div><p class="meta">'+matchSet.size+' matching nodes &middot; click any highlighted node to drill in</p><p class="ovw">'+info.desc+'</p><div class="sec"><h4>Tradeweb terminology</h4><p>'+info.twTerm+'</p></div><div class="sec"><h4>MarketAxess terminology</h4><p>'+info.mktxTerm+'</p></div><div class="conn-block"><div style="font-size:11px;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px">Nodes that participate in this liquidity model</div>'+matchesHtml+'</div>';
+    if(hint)hint.textContent='Liquidity model filter active. Highlighted nodes participate. Click a node to drill in.';
+  }
+  function selectNode(id){
+    const node=NODES[id];if(!node)return;mode='node';
+    platformEl.querySelectorAll('.dd-chip').forEach(c=>c.classList.remove('dd-active'));
+    platformEl.querySelectorAll('.dd-lm').forEach(c=>c.classList.remove('dd-active'));
+    if(buildBtn)buildBtn.classList.remove('dd-active');
+    overlayG.innerHTML='';
+    platformEl.querySelectorAll('.dd-node').forEach(n=>{n.classList.add('dd-dim');n.classList.remove('dd-sel','dd-on');});
+    platformEl.querySelectorAll('.dd-edge').forEach(e=>{e.classList.add('dd-dim');e.classList.remove('dd-on');});
+    const sel=platformEl.querySelector('.dd-node[data-id="'+id+'"]');
+    if(sel){sel.classList.add('dd-sel','dd-on');sel.classList.remove('dd-dim');}
+    const conns=edgesByNode[id]||[],connIds=new Set();
+    conns.forEach(({line,other})=>{line.classList.add('dd-on');line.classList.remove('dd-dim');connIds.add(other);});
+    connIds.forEach(otherId=>{const el=platformEl.querySelector('.dd-node[data-id="'+otherId+'"]');if(el){el.classList.add('dd-on');el.classList.remove('dd-dim');}});
+    const grouped={};
+    [...connIds].forEach(cid=>{const tier=NODES[cid]&&NODES[cid].tier;if(!tier)return;(grouped[tier]=grouped[tier]||[]).push(NODES[cid].label);});
+    const connHtml=TIER_ORDER.filter(t=>grouped[t]).map(t=>'<div class="conn-row"><strong>'+TIER_LABELS[t]+':</strong> '+grouped[t].join(' &middot; ')+'</div>').join('');
+    const sectionsHtml=(node.sections||[]).map(([h,p])=>'<div class="sec"><h4>'+h+'</h4><p>'+p+'</p></div>').join('');
+    const lmTags=(LM&&LM[id])||[];
+    const lmHtml=lmTags.length?'<div class="conn-row" style="margin-top:8px"><strong>Liquidity model:</strong> '+lmTags.map(t=>'<span style="color:'+LM_INFO[t].color+'">'+LM_INFO[t].name+'</span>').join(' &middot; ')+'</div>':'';
+    detail.innerHTML='<h3>'+node.label+'</h3><p class="meta">'+TIER_LABELS[node.tier]+' &middot; '+connIds.size+' connections</p><p class="ovw">'+node.overview+'</p>'+sectionsHtml+'<div class="conn-block">'+connHtml+lmHtml+'</div>';
+  }
+  function enterBuildMode(){
+    mode='build';buildPath=[];currentWf=null;
+    platformEl.querySelectorAll('.dd-chip').forEach(c=>c.classList.remove('dd-active'));
+    platformEl.querySelectorAll('.dd-lm').forEach(c=>c.classList.remove('dd-active'));
+    if(buildBtn)buildBtn.classList.add('dd-active');
+    if(hint)hint.textContent='Build mode: click nodes in sequence. Click Clear to exit.';
+    overlayG.innerHTML='';
+    platformEl.querySelectorAll('.dd-node').forEach(n=>n.classList.remove('dd-sel','dd-dim','dd-on'));
+    platformEl.querySelectorAll('.dd-edge').forEach(e=>e.classList.remove('dd-on','dd-dim'));
+    detail.innerHTML='<h3>Custom path &mdash; build mode</h3><p class="meta">Click nodes in order to assign your own use case path.</p><p class="ovw">Click <strong>Clear</strong> to start over.</p>';
+  }
+  function addToBuildPath(id){
+    if(buildPath[buildPath.length-1]===id)return;
+    buildPath.push(id);
+    renderPath(buildPath,'Custom path','Custom path with '+buildPath.length+' step'+(buildPath.length===1?'':'s')+'.');
+    if(buildBtn)buildBtn.classList.add('dd-active');
+    if(hint)hint.textContent='Build mode &middot; '+buildPath.length+' step'+(buildPath.length===1?'':'s')+'.';
+  }
+  function resetIdle(){mode='idle';buildPath=[];currentWf=null;clearAll();platformEl.querySelectorAll('.dd-lm').forEach(c=>c.classList.remove('dd-active'));if(buildBtn)buildBtn.classList.remove('dd-active');if(hint)hint.textContent='Click any node for the deep-dive.';setDefaultDetail();}
+  platformEl.querySelectorAll('.dd-chip').forEach(chip=>{chip.addEventListener('click',e=>{e.stopPropagation();selectWorkflow(chip.getAttribute('data-wf'));});});
+  platformEl.querySelectorAll('.dd-lm').forEach(chip=>{chip.addEventListener('click',e=>{e.stopPropagation();selectLiquidityModel(chip.getAttribute('data-lm'));});});
+  if(buildBtn)buildBtn.addEventListener('click',enterBuildMode);
+  if(clearBtn)clearBtn.addEventListener('click',resetIdle);
+  platformEl.querySelectorAll('.dd-node').forEach(node=>{node.addEventListener('click',e=>{e.stopPropagation();const id=node.getAttribute('data-id');if(mode==='build'){addToBuildPath(id);return;}if(mode==='wf'&&currentWf){const stepIdx=currentWf.wf.steps.indexOf(id);if(stepIdx>=0){showWorkflowStep(stepIdx);return;}}if(mode==='node'&&node.classList.contains('dd-sel')){resetIdle();return;}selectNode(id);});});
+  svg.addEventListener('click',e=>{if(e.target===svg)resetIdle();});
+  setDefaultDetail();
+}
+
+initPlatform(document.getElementById('platform-tw'),TW_NODES,TW_ADJ_RAW,TW_FB_RAW,TW_WORKFLOWS,'dd-arrow-tw',TW_LM);
+initPlatform(document.getElementById('platform-mktx'),MKTX_NODES,MKTX_ADJ_RAW,MKTX_FB_RAW,MKTX_WORKFLOWS,'dd-arrow-mktx',MKTX_LM);
+
+document.querySelectorAll('.tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    const target=tab.getAttribute('data-platform');
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+    document.querySelectorAll('.platform').forEach(p=>p.classList.add('hidden'));
+    document.getElementById('platform-'+target).classList.remove('hidden');
+  });
+});
+</script>
+</body>
+</html>
